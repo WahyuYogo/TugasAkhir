@@ -7,8 +7,8 @@
                 <p class="text-base">Easily create and showcase your Link in just a few steps.</p>
             </div>
         </div>
-        <div class="flex items-center justify-center h-screen md:w-2/5 bg-white border-l border-gray-200">
-           @livewire('auth.register')
+        <div class="flex items-center justify-center pt h-screen md:w-2/5 bg-white border-l border-gray-200">
+           @livewire('claim-url')
         </div>
     </div>
 </x-layouts.app>

@@ -1,4 +1,4 @@
-<div class="max-w-md mx-auto mt-10 bg-white p-6 rounded-lg shadow">
+<div>
     <h2 class="text-2xl font-bold">Login</h2>
     <p class="text-sm mb-6">Welcome back, Don't have an account yet? <a href="{{ route('register') }}"
             class="underline text-blue-600">Sign

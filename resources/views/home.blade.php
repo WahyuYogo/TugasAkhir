@@ -1,71 +1,95 @@
 <x-layouts.header>
-    <div class="container mx-auto px-4 py-6">
-        <!-- Header Profil -->
-        <div class="flex items-center">
-            {{-- <img src="{{ asset('images/profile.jpg') }}" alt="Foto Profil" class="w-24 h-24 rounded-full object-cover"> --}}
-            <div class="ml-4">
-                <h1 class="text-3xl font-bold">John Doe</h1>
-                <p class="text-gray-600">Saya adalah seorang web developer berpengalaman dengan fokus pada Laravel,
-                    Livewire, dan Tailwind CSS.</p>
+    <div class="relative flex flex-col items-center justify-end min-h-screen bg-white">
+        <!-- Judul -->
+        <h1 class="text-4xl font-bold text-center">Buat Halaman Pribadi Anda.</h1>
+        <p class="text-gray-600 text-center mt-2">Bergabunglah bersama kami, dan buat halaman pribadi anda secara gratis.
+        </p>
+    
+        <!-- Tombol -->
+        <div class="mt-8">
+            <a href="#" class="px-6 py-2 border border-black text-black rounded-full hover:bg-gray-200">Gabung Sekarang</a>
+            <p class="text-sm text-center text-gray-500 mt-2"><a href="#" class="underline">Log In</a></p>
+        </div>
+    
+        <!-- Gambar -->
+        <div class="relative flex flex-row items-end mt-10 gap-4 z-10">
+            <img class="max-w-[300px] h-auto object-contain border-t border-l border-r border-gray-200 rounded-xl"
+                src="{{ asset('images/pc02.jpg') }}" alt="">
+            <img class="max-w-[300px] h-auto object-contain border-t border-l border-r border-gray-200 rounded-xl"
+                src="{{ asset('images/pc01.jpg') }}" alt="">
+            <img class="max-w-[300px] h-auto object-contain border-t border-l border-r border-gray-200 rounded-xl"
+                src="{{ asset('images/pc03.jpg') }}" alt="">
+        
+            <!-- Gradient Overlay -->
+            <div class="absolute bottom-0 left-0 w-full h-80 bg-gradient-to-t from-white to-transparent"></div>
+        </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center mx-auto p-4">
+        <!-- Section Dukungan -->
+        <div class="text-center mt-10">
+            <h3 class="font-semibold text-gray-600">Didukung Oleh:</h3>
+            <div class="flex justify-center gap-4 mt-3">
+                <div class="w-20 h-6 bg-gray-300 rounded"></div>
+                <div class="w-20 h-6 bg-gray-300 rounded"></div>
+                <div class="w-20 h-6 bg-gray-300 rounded"></div>
             </div>
         </div>
-
-        <!-- Roles -->
-        <div class="mt-6">
-            <h2 class="text-2xl font-semibold mb-2">Roles</h2>
-            <div class="flex flex-wrap gap-2">
-                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Full Stack Developer</span>
-                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">UI/UX Designer</span>
-            </div>
-        </div>
-
-        <!-- Skills -->
-        <div class="mt-6">
-            <h2 class="text-2xl font-semibold mb-2">Skills</h2>
-            <div class="flex flex-wrap gap-2">
-                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Laravel</span>
-                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Livewire</span>
-                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Tailwind CSS</span>
-            </div>
-        </div>
-
-        <!-- Social Links -->
-        <div class="mt-6">
-            <h2 class="text-2xl font-semibold mb-2">Social Links</h2>
-            <div class="flex space-x-4">
-                <a href="https://linkedin.com/in/johndoe" target="_blank"
-                    class="text-blue-500 hover:underline">LinkedIn</a>
-                <a href="https://twitter.com/johndoe" target="_blank" class="text-blue-500 hover:underline">Twitter</a>
-            </div>
-        </div>
-
-        <!-- Projects -->
-        <div class="mt-10">
-            <h2 class="text-2xl font-semibold mb-4">Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Project 1 -->
-                <div class="bg-white shadow rounded-lg overflow-hidden">
-                    <img src="{{ asset('images/project1.jpg') }}" alt="Project 1" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold">Project Satu</h3>
-                        <p class="text-gray-600 mt-2">Deskripsi singkat tentang project pertama ini.</p>
-                    </div>
+        
+        <!-- Section Pilih Template -->
+        <div class="text-center mt-10">
+            <h3 class="font-semibold text-gray-600">Template</h3>
+            <h2 class="text-2xl font-bold">Pilih Template Favoritmu</h2>
+        
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 mt-6 p-4">
+                <div class="">
+                    <a href="">
+                        <img class="rounded-xl border border-gray-300 transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0" src="{{asset('images/dt01.jpg')}}" alt="">
+                        <h1 class="font-semibold text-start mt-3">Simple Links</h1>
+                    </a>
                 </div>
-                <!-- Project 2 -->
-                <div class="bg-white shadow rounded-lg overflow-hidden">
-                    <img src="{{ asset('images/project2.jpg') }}" alt="Project 2" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold">Project Dua</h3>
-                        <p class="text-gray-600 mt-2">Deskripsi singkat tentang project kedua ini.</p>
-                    </div>
+                <div class="">
+                    <a href="">
+                        <img class="rounded-xl border border-gray-300 transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0" src="{{asset('images/dt01.jpg')}}" alt="">
+                        <h1 class="font-semibold text-start mt-3">Simple Links</h1>
+                    </a>
                 </div>
-                <!-- Project 3 -->
-                <div class="bg-white shadow rounded-lg overflow-hidden">
-                    <img src="{{ asset('images/project3.jpg') }}" alt="Project 3" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold">Project Tiga</h3>
-                        <p class="text-gray-600 mt-2">Deskripsi singkat tentang project ketiga ini.</p>
-                    </div>
+                <div class="">
+                    <a href="">
+                        <img class="rounded-xl border border-gray-300 transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0" src="{{asset('images/dt01.jpg')}}" alt="">
+                        <h1 class="font-semibold text-start mt-3">Simple Links</h1>
+                    </a>
+                </div>
+                <div class="">
+                    <a href="">
+                        <img class="rounded-xl border border-gray-300 transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0" src="{{asset('images/dt01.jpg')}}" alt="">
+                        <h1 class="font-semibold text-start mt-3">Simple Links</h1>
+                    </a>
+                </div>
+                <div class="">
+                    <a href="">
+                        <img class="rounded-xl border border-gray-300 transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0" src="{{asset('images/dt01.jpg')}}" alt="">
+                        <h1 class="font-semibold text-start mt-3">Simple Links</h1>
+                    </a>
+                </div>
+                <div class="">
+                    <a href="">
+                        <img class="rounded-xl border border-gray-300 transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0" src="{{asset('images/dt01.jpg')}}" alt="">
+                        <h1 class="font-semibold text-start mt-3">Simple Links</h1>
+                    </a>
+                </div>
+                <div class="">
+                    <a href="">
+                        <img class="rounded-xl border border-gray-300 transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0" src="{{asset('images/dt01.jpg')}}" alt="">
+                        <h1 class="font-semibold text-start mt-3">Simple Links</h1>
+                    </a>
+                </div>
+                <div class="">
+                    <a href="">
+                        <img class="rounded-xl border border-gray-300 transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0" src="{{asset('images/dt01.jpg')}}" alt="">
+                        <h1 class="font-semibold text-start mt-3">Simple Links</h1>
+                    </a>
+                </div>
                 </div>
             </div>
         </div>

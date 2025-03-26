@@ -18,6 +18,9 @@
             <ul class="space-y-2 font-medium">
 
                 <li>
+                    <span class="ms-3">{{ auth()->user()->name }}</span>
+                </li>
+                <li>
                     <a href="{{ url('/dashboard') }}"
                         class="flex items-center p-2 text-black hover:text-orange-500 rounded-lg hover:bg-orange-100 group">
                         <svg class="w-5 h-5 text-black transition duration-75 group-hover:text-orange-500"

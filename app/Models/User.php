@@ -21,7 +21,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'slug',
     ];
+
+    public function views()
+    {
+        return $this->hasMany(PortfolioView::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
