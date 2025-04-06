@@ -1,0 +1,49 @@
+<x-layouts.app>
+    <h1>cre</h1>
+    {{-- <div class="max-w-4xl mx-auto p-6 text-center">
+        <div class="relative">
+            <img src="{{ asset('images/cover.jpg') }}" class="w-full h-48 object-cover rounded-lg">
+            <img src="{{ asset('images/profile.jpg') }}"
+                class="rounded-full w-24 h-24 absolute -bottom-12 left-1/2 transform -translate-x-1/2">
+        </div>
+
+        <h1 class="text-3xl font-bold mt-16">{{ $user->name }}</h1>
+        <p class="text-gray-600">{{ $user->role }}</p>
+
+        <div class="mt-6">
+            <h2 class="text-xl font-semibold">About Me</h2>
+            <p class="text-gray-700 mt-2">{{ $user->about_me }}</p>
+        </div>
+
+        <div class="mt-6">
+            <h2 class="text-xl font-semibold">Skills</h2>
+            <div class="flex justify-center gap-2 mt-2">
+                @foreach ($user->skills as $skill)
+                    <span class="bg-green-500 text-white px-3 py-1 rounded-lg">{{ $skill }}</span>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="mt-6">
+            <h2 class="text-xl font-semibold">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                @foreach ($user->projects as $project)
+                    <div class="p-4 border rounded-lg shadow-md bg-white">
+                        <h3 class="font-semibold text-lg">{{ $project->name }}</h3>
+                        <p class="text-gray-700">{{ $project->description }}</p>
+                        <a href="{{ $project->url }}" class="text-blue-600">View Project</a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="mt-6">
+            <h2 class="text-xl font-semibold">Follow Me</h2>
+            <div class="flex justify-center gap-4 mt-2">
+                @foreach ($user->social_links as $link)
+                    <a href="{{ $link->url }}" class="text-blue-500 hover:underline">{{ $link->platform }}</a>
+                @endforeach
+            </div>
+        </div>
+    </div> --}}
+</x-layouts.app>

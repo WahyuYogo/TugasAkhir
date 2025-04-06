@@ -34,6 +34,59 @@
                         <span class="ms-3">Dashboard</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ url('/template') }}"
+                        class="flex items-center p-2 text-black hover:text-orange-500 rounded-lg hover:bg-orange-100 group">
+                        <svg class="w-5 h-5 text-black transition duration-75 group-hover:text-orange-500"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M4.857 3A1.857 1.857 0 0 0 3 4.857v4.286C3 10.169 3.831 11 4.857 11h4.286A1.857 1.857 0 0 0 11 9.143V4.857A1.857 1.857 0 0 0 9.143 3H4.857Zm10 0A1.857 1.857 0 0 0 13 4.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 21 9.143V4.857A1.857 1.857 0 0 0 19.143 3h-4.286Zm-10 10A1.857 1.857 0 0 0 3 14.857v4.286C3 20.169 3.831 21 4.857 21h4.286A1.857 1.857 0 0 0 11 19.143v-4.286A1.857 1.857 0 0 0 9.143 13H4.857ZM18 14a1 1 0 1 0-2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0-2h-2v-2Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <span class="ms-3">Template</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('/projects') }}"
+                        class="flex items-center p-2 text-black hover:text-orange-500 rounded-lg hover:bg-orange-100 group">
+                        <svg class="w-5 h-5 text-black transition duration-75 group-hover:text-orange-500"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m8 8-4 4 4 4m8 0 4-4-4-4m-2-3-4 14" />
+                        </svg>
+                        <span class="ms-3">Projects</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('/links') }}"
+                        class="flex items-center p-2 text-black hover:text-orange-500 rounded-lg hover:bg-orange-100 group">
+                        <svg class="w-5 h-5 text-black transition duration-75 group-hover:text-orange-500"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13.213 9.787a3.391 3.391 0 0 0-4.795 0l-3.425 3.426a3.39 3.39 0 0 0 4.795 4.794l.321-.304m-.321-4.49a3.39 3.39 0 0 0 4.795 0l3.424-3.426a3.39 3.39 0 0 0-4.794-4.795l-1.028.961" />
+                        </svg>
+                        <span class="ms-3">Links</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('/skills') }}"
+                        class="flex items-center p-2 text-black hover:text-orange-500 rounded-lg hover:bg-orange-100 group">
+                        <svg class="w-5 h-5 text-black transition duration-75 group-hover:text-orange-500"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M11 9a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z" />
+                            <path fill-rule="evenodd"
+                                d="M9.896 3.051a2.681 2.681 0 0 1 4.208 0c.147.186.38.282.615.255a2.681 2.681 0 0 1 2.976 2.975.681.681 0 0 0 .254.615 2.681 2.681 0 0 1 0 4.208.682.682 0 0 0-.254.615 2.681 2.681 0 0 1-2.976 2.976.681.681 0 0 0-.615.254 2.682 2.682 0 0 1-4.208 0 .681.681 0 0 0-.614-.255 2.681 2.681 0 0 1-2.976-2.975.681.681 0 0 0-.255-.615 2.681 2.681 0 0 1 0-4.208.681.681 0 0 0 .255-.615 2.681 2.681 0 0 1 2.976-2.975.681.681 0 0 0 .614-.255ZM12 6a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"
+                                clip-rule="evenodd" />
+                            <path
+                                d="M5.395 15.055 4.07 19a1 1 0 0 0 1.264 1.267l1.95-.65 1.144 1.707A1 1 0 0 0 10.2 21.1l1.12-3.18a4.641 4.641 0 0 1-2.515-1.208 4.667 4.667 0 0 1-3.411-1.656Zm7.269 2.867 1.12 3.177a1 1 0 0 0 1.773.224l1.144-1.707 1.95.65A1 1 0 0 0 19.915 19l-1.32-3.93a4.667 4.667 0 0 1-3.4 1.642 4.643 4.643 0 0 1-2.53 1.21Z" />
+                        </svg>
+                        <span class="ms-3">Skills</span>
+                    </a>
+                </li>
 
                 <li>
                     <form action="{{ route('logout') }}" method="POST"

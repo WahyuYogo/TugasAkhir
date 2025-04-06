@@ -1,6 +1,6 @@
 <x-layouts.sidebar>
     <h1>Welcome, {{ Auth::user()->name }}!</h1>
-    <h1 class="font-semibold text-gray-900 text-2xl mb-3">Statistics</h1>
+    {{-- <h1 class="font-semibold text-gray-900 text-2xl mb-3">Statistics</h1>
     <div class="grid grid-cols-3 gap-4 mb-4">
         <div class="max-w-sm py-4 px-6 bg-orange-300 border border-orange-500 rounded-xl shadow-sm">
             <p class="font-semibold text-gray-900">Today</p>
@@ -26,12 +26,13 @@
             <p class="font-semibold text-gray-900">Views</p>
             </a>
         </div>
-    </div>
+    </div> --}}
 
     <div class="flex items-center justify-between mt-6 mb-3">
         <h1 class="font-semibold text-gray-900 text-2xl mb-3 mt-6">Projects</h1>
         <button type="button"
-            class="ms-auto text-white bg-orange-500 hover:bg-orange-700 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 py-2 focus:outline-none ">Add Project</button>
+            class="ms-auto text-white bg-orange-500 hover:bg-orange-700 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 py-2 focus:outline-none ">Add
+            Project</button>
     </div>
     <div class="relative overflow-x-auto sm:rounded-lg border border-gray-200">
         <table class="w-full text-sm text-left rtl:text-right text-black">

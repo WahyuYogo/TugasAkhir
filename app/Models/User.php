@@ -18,16 +18,36 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'user_id',
         'name',
         'email',
         'password',
         'slug',
+        'template_id',
     ];
 
-    public function views()
+    public function userTemplate()
     {
-        return $this->hasMany(PortfolioView::class);
+        return $this->hasOne(UserTemplate::class);
     }
+
+    public function skills()
+    {
+        return $this->hasMany(Skill::class);
+    }
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
+
+    public function socialLinks()
+    {
+        return $this->hasMany(SocialLink::class);
+    }
+
+
+
 
     /**
      * The attributes that should be hidden for serialization.

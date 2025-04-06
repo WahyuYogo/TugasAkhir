@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SkillController;
+use App\Http\Controllers\SocialLinkController;
+use App\Http\Controllers\TemplateController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\ClaimUrl as LivewireClaimUrl;
 
 Route::get('/', function () {
     return view('home');
 });
-
-Route::get('/user/{slug}', [UserController::class, 'show'])->name('portfolio.show');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', function () {
@@ -30,7 +31,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard.user');
     })->name('dashboard');
+
     Route::get('/claim-url', function () {
         return view('url');
     })->name('claim.url');
+
+    Route::get('/template', [TemplateController::class, 'index'])->name('select-template');
+    Route::post('/template', [TemplateController::class, 'store']);
+
+    Route::resource('skills', SkillController::class)->only(['index', 'store', 'destroy']);
+    Route::resource('projects', ProjectController::class)->only(['index', 'store', 'destroy']);
+    Route::resource('links', SocialLinkController::class)->only(['index', 'store', 'destroy']);
 });
+
+Route::get('/{username}', [PortofolioController::class, 'show'])->name('portfolio.show');
