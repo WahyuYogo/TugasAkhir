@@ -39,9 +39,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/template', [TemplateController::class, 'index'])->name('select-template');
     Route::post('/template', [TemplateController::class, 'store']);
 
-    Route::resource('skills', SkillController::class)->only(['index', 'store', 'destroy']);
-    Route::resource('projects', ProjectController::class)->only(['index', 'store', 'destroy']);
-    Route::resource('links', SocialLinkController::class)->only(['index', 'store', 'destroy']);
+    Route::resource('skills', SkillController::class)->only(['index', 'store', 'destroy', 'update']);
+    Route::resource('projects', ProjectController::class)->only(['index', 'store', 'destroy', 'update']);
+    Route::resource('links', SocialLinkController::class)->only(['index', 'store', 'destroy', 'update']);
 });
 
 Route::get('/{username}', [PortofolioController::class, 'show'])->name('portfolio.show');

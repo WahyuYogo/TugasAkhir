@@ -58,7 +58,7 @@
             <tbody>
                 <tr class="bg-white border-b border-gray-200">
                     <td class="px-6 py-4 border-r border-gray-200">
-                        {{-- {{ $loop->iteration }} --}}1
+                        {{-- {{ $loop->iteration }} --}}
                     </td>
                     <th scope="row"
                         class="px-6 py-4 border-r border-gray-200 font-medium text-black whitespace-nowrap">
