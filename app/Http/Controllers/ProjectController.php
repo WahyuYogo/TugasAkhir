@@ -31,26 +31,38 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-            'description' => 'nullable|string',
-        ]);
+        $user = auth()->user();
 
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('projects', 'public');
-        } else {
-            $imagePath = null;
+        // Cek apakah user sudah memiliki 10 project
+        if ($user->projects()->count() >= 10) {
+            return redirect()->back()->withErrors(['error' => 'Anda hanya bisa memiliki maksimal 10 project.']);
         }
 
-        auth()->user()->projects()->create([
-            'title' => $request->title,
-            'image' => $imagePath,
-            'description' => $request->description,
+        // Validasi input
+        $request->validate([
+            'title'       => 'required|string|max:255',
+            'description' => 'required|string',
+            'image'       => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Maksimal 2MB
+        ], [
+            'image.required' => 'Gambar wajib diunggah.',
+            'image.image'    => 'File harus berupa gambar.',
+            'image.mimes'    => 'Format gambar harus jpeg, png, jpg, atau gif.',
+            'image.max'      => 'Ukuran gambar tidak boleh lebih dari 2MB.',
         ]);
 
-        return redirect()->route('projects.index')->with('success', 'Project added successfully!');
+        // Simpan gambar ke storage
+        $imagePath = $request->file('image')->store('projects', 'public');
+
+        // Simpan project baru
+        $user->projects()->create([
+            'title'       => $request->title,
+            'description' => $request->description,
+            'image'       => $imagePath,
+        ]);
+
+        return redirect()->back()->with('success', 'Project berhasil ditambahkan!');
     }
+
 
 
     /**

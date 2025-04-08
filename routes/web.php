@@ -41,7 +41,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('skills', SkillController::class)->only(['index', 'store', 'destroy', 'update']);
     Route::resource('projects', ProjectController::class)->only(['index', 'store', 'destroy', 'update']);
-    Route::resource('links', SocialLinkController::class)->only(['index', 'store', 'destroy', 'update']);
+    Route::resource('links', SocialLinkController::class)->only(['index', 'store', 'destroy', 'update', 'edit']);
 });
 
 Route::get('/{username}', [PortofolioController::class, 'show'])->name('portfolio.show');

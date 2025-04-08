@@ -58,13 +58,15 @@
         </div>
     @endif
     @if ($errors->any())
-        <div class="p-4 mt-4 text-sm text-red-800 bg-red-100 rounded-lg dark:bg-red-900 dark:text-red-200 w-full"
-            role="alert">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
+        <div class="p-4 my-4 text-sm text-red-700 bg-red-100 rounded-lg">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
     @endif
+
 
     <div class="relative overflow-x-auto rounded-lg border border-gray-200 mt-4">
         <table class="w-full text-sm text-left text-black">
