@@ -24,6 +24,9 @@ class User extends Authenticatable
         'password',
         'slug',
         'template_id',
+        'profile_photo',
+        'job',
+        'about',
     ];
 
     public function userTemplate()

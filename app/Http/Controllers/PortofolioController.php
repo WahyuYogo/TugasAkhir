@@ -10,10 +10,11 @@ use Illuminate\Http\Request;
 class PortofolioController extends Controller
 {
     public function show($slug)
-    {
-        $user = User::where('slug', $slug)->firstOrFail();
-        $userTemplate = UserTemplate::where('user_id', $user->id)->first();
-        $template = $userTemplate ? $userTemplate->template->slug : 'minimalist';
-        return view("templates.$template", compact('user'));
-    }
+{
+    $user = User::where('slug', $slug)->firstOrFail();
+    $userTemplate = UserTemplate::where('user_id', $user->id)->first();
+    $template = $userTemplate ? $userTemplate->template->slug : 'minimalist';
+    return view("templates.$template", compact('user', 'template'));
+}
+
 }

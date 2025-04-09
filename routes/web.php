@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\SocialLinkController;
@@ -10,6 +11,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
+});
+Route::get('/test', function () {
+    return view('templates.template01');
 });
 
 Route::middleware('guest')->group(function () {
@@ -42,6 +46,13 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('skills', SkillController::class)->only(['index', 'store', 'destroy', 'update']);
     Route::resource('projects', ProjectController::class)->only(['index', 'store', 'destroy', 'update']);
     Route::resource('links', SocialLinkController::class)->only(['index', 'store', 'destroy', 'update', 'edit']);
+
+    Route::get('/profile', [ProfileController::class, 'create'])->name('profile.create');
+    Route::post('/profile/store', [ProfileController::class, 'store'])->name('profile.store');
+
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
 });
 
 Route::get('/{username}', [PortofolioController::class, 'show'])->name('portfolio.show');

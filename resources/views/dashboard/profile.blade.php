@@ -1,39 +1,33 @@
 <x-layouts.sidebar>
-    <div class="max-w-4xl mx-auto my-10 p-6 bg-white shadow-md rounded-lg">
-        <h2 class="text-2xl font-bold mb-4">Edit Profile</h2>
 
+    <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-4">Create Your Profile</h2>
+    
         @if (session('success'))
-            <div class="text-green-500">{{ session('success') }}</div>
+            <div class="p-4 mb-4 text-green-700 bg-green-100 rounded-lg">
+                {{ session('success') }}
+            </div>
         @endif
-
-        <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+    
+        <form action="{{ route('profile.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+    
             <div class="mb-4">
-                <label class="block text-sm font-medium">Profile Image</label>
-                <input type="file" name="profile_image" class="block w-full mt-1">
-                @if ($profile && $profile->profile_image)
-                    <img src="{{ asset('storage/' . $profile->profile_image) }}" class="h-20 mt-2">
-                @endif
+                <label class="block text-gray-700">Profile Photo</label>
+                <input type="file" name="profile_photo" class="w-full border p-2 rounded">
             </div>
-
+    
             <div class="mb-4">
-                <label class="block text-sm font-medium">Name</label>
-                <input type="text" name="name" value="{{ old('name', $profile->name ?? '') }}"
-                    class="w-full p-2 border rounded">
+                <label class="block text-gray-700">Role / Job</label>
+                <input type="text" name="job" class="w-full border p-2 rounded" required>
             </div>
-
+    
             <div class="mb-4">
-                <label class="block text-sm font-medium">Role</label>
-                <input type="text" name="role" value="{{ old('role', $profile->role ?? '') }}"
-                    class="w-full p-2 border rounded">
+                <label class="block text-gray-700">About Me</label>
+                <textarea name="about" class="w-full border p-2 rounded" required></textarea>
             </div>
-
-            <div class="mb-4">
-                <label class="block text-sm font-medium">About Me</label>
-                <textarea name="about" class="w-full p-2 border rounded">{{ old('about', $profile->about ?? '') }}</textarea>
-            </div>
-
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Update Profile</button>
+    
+            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Save Profile</button>
         </form>
     </div>
 </x-layouts.sidebar>
