@@ -33,9 +33,8 @@ class ProjectController extends Controller
     {
         $user = auth()->user();
 
-        // Cek apakah user sudah memiliki 10 project
-        if ($user->projects()->count() >= 10) {
-            return redirect()->back()->withErrors(['error' => 'Anda hanya bisa memiliki maksimal 10 project.']);
+        if ($user->projects()->count() >= 6) {
+            return redirect()->back()->withErrors(['error' => 'Anda hanya bisa memiliki maksimal 6 project.']);
         }
 
         // Validasi input
