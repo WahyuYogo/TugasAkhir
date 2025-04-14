@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
@@ -9,9 +10,8 @@ use App\Http\Controllers\TemplateController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class, 'index']);
+
 Route::get('/test', function () {
     return view('templates.template01');
 });
@@ -52,7 +52,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-
 });
 
 Route::get('/{username}', [PortofolioController::class, 'show'])->name('portfolio.show');
