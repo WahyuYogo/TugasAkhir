@@ -43,15 +43,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/template', [TemplateController::class, 'index'])->name('select-template');
     Route::post('/template', [TemplateController::class, 'store']);
 
-    Route::resource('skills', SkillController::class)->only(['index', 'store', 'destroy', 'update']);
-    Route::resource('projects', ProjectController::class)->only(['index', 'store', 'destroy', 'update']);
-    Route::resource('links', SocialLinkController::class)->only(['index', 'store', 'destroy', 'update', 'edit']);
+    Route::resource('skills', SkillController::class);
+    Route::resource('projects', ProjectController::class);
+    Route::resource('links', SocialLinkController::class);    
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
+Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
-    Route::get('/profile', [ProfileController::class, 'create'])->name('profile.create');
-    Route::post('/profile/store', [ProfileController::class, 'store'])->name('profile.store');
-
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 Route::get('/{username}', [PortofolioController::class, 'show'])->name('portfolio.show');

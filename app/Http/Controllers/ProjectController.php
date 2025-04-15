@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
-use Illuminate\Container\Attributes\Storage;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -75,40 +75,48 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
+    public function edit(Project $project)
+{
+    if (auth()->id() !== $project->user_id) {
+        abort(403);
     }
+
+    return view('dashboard.edit', compact('project'));
+}
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Project $project)
     {
-        // $this->authorize('update', $project);
-
+        if (auth()->id() !== $project->user_id) {
+            abort(403);
+        }
+    
         $request->validate([
             'title' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-            'description' => 'nullable|string',
+            'description' => 'required|string',
+            'link' => 'nullable|url',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
-
-        $imagePath = $project->image;
+    
+        $data = $request->only(['title', 'description', 'link']);
+    
         if ($request->hasFile('image')) {
-            if ($project->image) {
+            // Hapus gambar lama
+            if ($project->image && Storage::disk('public')->exists($project->image)) {
                 Storage::disk('public')->delete($project->image);
             }
-            $imagePath = $request->file('image')->store('projects', 'public');
+    
+            // Upload gambar baru
+            $data['image'] = $request->file('image')->store('projects', 'public');
         }
-
-        $project->update([
-            'title' => $request->title,
-            'image' => $imagePath,
-            'description' => $request->description
-        ]);
-
-        return redirect()->route('projects.index')->with('success', 'Project updated successfully!');
+    
+        $project->update($data);
+    
+        return redirect()->route('dashboard')->with('success', 'Project berhasil diperbarui.');
     }
+
 
 
     /**

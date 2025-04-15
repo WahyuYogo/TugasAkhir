@@ -27,6 +27,16 @@
             </button>
         </form>
 
+
+        @if (session('success'))
+            <div class="mb-4 p-4 text-green-700 bg-green-100 rounded-lg">
+                {{ session('success') }}
+            </div>
+        @elseif (session('error'))
+            <div class="mb-4 p-4 text-red-700 bg-red-100 rounded-lg">
+                {{ session('error') }}
+            </div>
+        @endif
         <!-- Daftar Link -->
         <div class="mt-6">
             <table class="w-full text-sm text-left rtl:text-right text-black border border-gray-200 rounded-lg">

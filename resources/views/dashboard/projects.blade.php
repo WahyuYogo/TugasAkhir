@@ -90,9 +90,9 @@
                         <td class="px-6 py-4 border-r border-gray-200">{{ $project->title }}</td>
                         <td class="px-6 py-4 border-r border-gray-200">{{ Str::limit($project->description, 50) }}</td>
                         <td class="px-6 py-4 border-r border-gray-200">
-                            <form action="{{ route('projects.update', $project->id) }}" method="POST">
+                            <form action="{{ route('projects.edit', $project->id) }}" method="POST">
                                 @csrf
-                                @method('PUT')
+                                @method('GET')
                                 <button type="submit" class="text-blue-500 hover:underline">Edit</button>
                             </form>
 

@@ -1,5 +1,5 @@
 <x-layouts.sidebar>
-    <h1>Welcome, {{ Auth::user()->name }}!</h1>
+    <h1 class="mb-3">Welcome, {{ Auth::user()->name }}!</h1>
     {{-- <h1 class="font-semibold text-gray-900 text-2xl mb-3">Statistics</h1>
     <div class="grid grid-cols-3 gap-4 mb-4">
         <div class="max-w-sm py-4 px-6 bg-orange-300 border border-orange-500 rounded-xl shadow-sm">
@@ -28,62 +28,22 @@
         </div>
     </div> --}}
 
-    <div class="flex items-center justify-between mt-6 mb-3">
-        <h1 class="font-semibold text-gray-900 text-2xl mb-3 mt-6">Projects</h1>
-        <button type="button"
-            class="ms-auto text-white bg-orange-500 hover:bg-orange-700 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 py-2 focus:outline-none ">Add
-            Project</button>
-    </div>
-    <div class="relative overflow-x-auto rounded-lg border border-gray-200 mt-4">
-        <table class="w-full text-sm text-left text-black">
-            <thead class="text-xs text-black uppercase bg-white border-b border-gray-200">
-                <tr>
-                    <th scope="col" class="px-6 py-3 border-r border-gray-200">No</th>
-                    <th scope="col" class="px-6 py-3 border-r border-gray-200">Image</th>
-                    <th scope="col" class="px-6 py-3 border-r border-gray-200">Title</th>
-                    <th scope="col" class="px-6 py-3 border-r border-gray-200">Description</th>
-                    <th scope="col" class="px-6 py-3 border-r border-gray-200">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse (auth()->user()->projects as $index => $project)
-                    <tr class="bg-white border-b border-gray-200">
-                        <td class="px-6 py-4 border-r border-gray-200">{{ $index + 1 }}</td>
-                        <td class="px-6 py-4 border-r border-gray-200">
-                            <img src="{{ asset('storage/' . $project->image) }}" alt="Project Image"
-                                class="w-16 h-16 object-cover rounded-md">
-                        </td>
-                        <td class="px-6 py-4 border-r border-gray-200">{{ $project->title }}</td>
-                        <td class="px-6 py-4 border-r border-gray-200">{{ Str::limit($project->description, 50) }}</td>
-                        <td class="px-6 py-4 border-r border-gray-200">
-                            <form action="{{ route('projects.update', $project->id) }}" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <button type="submit" class="text-blue-500 hover:underline">Edit</button>
-                            </form>
+    @if (session('success'))
+            <div class="mb-4 p-4 text-green-700 bg-green-100 rounded-lg">
+                {{ session('success') }}
+            </div>
+        @elseif (session('error'))
+            <div class="mb-4 p-4 text-red-700 bg-red-100 rounded-lg">
+                {{ session('error') }}
+            </div>
+        @endif
 
-                            <form action="{{ route('projects.destroy', $project->id) }}" method="POST"
-                                class="inline-block" onsubmit="return confirm('Yakin ingin menghapus project ini?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="font-medium text-red-600 hover:underline">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                @empty
-                    <tr class="bg-white border-b border-gray-200">
-                        <td colspan="5" class="px-6 py-4 text-center text-gray-400">Belum ada project.</td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
-    </div>
 
     <div class="flex items-center justify-between mt-6 mb-3">
         <h1 class="font-semibold text-gray-900 text-2xl mb-3 mt-6">ShortLink</h1>
-        <button type="button"
+        <a href="/links"
             class="ms-auto text-white bg-orange-500 hover:bg-orange-700 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 py-2 focus:outline-none ">Add
-            Link</button>
+            Links</a>
     </div>
     <div class="relative overflow-x-auto sm:rounded-lg border border-gray-200">
         <table class="w-full text-sm text-left rtl:text-right text-black">
@@ -118,9 +78,7 @@
                             {{ getUsernameFromUrl($link->url) }}
                         </td>
                         <td class="px-6 py-4 border-r border-gray-200">
-                            <a href="{{ route('links.edit', $link->id) }}"
-                                class="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600">Edit</a>
-
+                            
                             <form action="{{ route('links.destroy', $link->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
@@ -128,6 +86,55 @@
                                     class="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600">
                                     Delete
                                 </button>
+                            </form>
+                        </td>
+                    </tr>
+                @empty
+                    <tr class="bg-white border-b border-gray-200">
+                        <td colspan="5" class="px-6 py-4 text-center text-gray-400">Belum ada project.</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+
+    <div class="flex items-center justify-between mt-6 mb-3">
+        <h1 class="font-semibold text-gray-900 text-2xl mb-3 mt-6">Projects</h1>
+        <a href="/projects"
+            class="ms-auto text-white bg-orange-500 hover:bg-orange-700 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 py-2 focus:outline-none ">Add
+            Project</a>
+    </div>
+    <div class="relative overflow-x-auto rounded-lg border border-gray-200 mt-4">
+        <table class="w-full text-sm text-left text-black">
+            <thead class="text-xs text-black uppercase bg-white border-b border-gray-200">
+                <tr>
+                    <th scope="col" class="px-6 py-3 border-r border-gray-200">No</th>
+                    <th scope="col" class="px-6 py-3 border-r border-gray-200">Image</th>
+                    <th scope="col" class="px-6 py-3 border-r border-gray-200">Title</th>
+                    <th scope="col" class="px-6 py-3 border-r border-gray-200">Description</th>
+                    <th scope="col" class="px-6 py-3 border-r border-gray-200">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse (auth()->user()->projects as $index => $project)
+                    <tr class="bg-white border-b border-gray-200">
+                        <td class="px-6 py-4 border-r border-gray-200">{{ $index + 1 }}</td>
+                        <td class="px-6 py-4 border-r border-gray-200">
+                            <img src="{{ asset('storage/' . $project->image) }}" alt="Project Image"
+                                class="w-16 h-16 object-cover rounded-md">
+                        </td>
+                        <td class="px-6 py-4 border-r border-gray-200">{{ $project->title }}</td>
+                        <td class="px-6 py-4 border-r border-gray-200">{{ Str::limit($project->description, 50) }}</td>
+                        <td class="px-6 py-4 border-r border-gray-200">
+                            <a href="{{ route('projects.edit', $project->id) }}"
+                                class="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                                Edit
+                             </a>                             
+                            <form action="{{ route('projects.destroy', $project->id) }}" method="POST"
+                                class="inline-block" onsubmit="return confirm('Yakin ingin menghapus project ini?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="font-medium text-red-600 hover:underline">Delete</button>
                             </form>
                         </td>
                     </tr>

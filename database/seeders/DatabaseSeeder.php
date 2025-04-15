@@ -22,9 +22,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Template::insert([
-            ['name' => 'Minimalist', 'preview_image' => 'minimalist.png', 'slug' => 'minimalist'],
-            ['name' => 'Professional', 'preview_image' => 'professional.png', 'slug' => 'professional'],
-            ['name' => 'Creative', 'preview_image' => 'creative.png', 'slug' => 'creative'],
+            ['name' => 'Example 1', 'preview_image' => 'ex1.png', 'slug' => 'ex1'],
+            ['name' => 'Example 2', 'preview_image' => 'ex2.png', 'slug' => 'ex2'],
+            ['name' => 'Example 3', 'preview_image' => 'ex3.png', 'slug' => 'ex3'],
+            ['name' => 'Example 4', 'preview_image' => 'ex4.png', 'slug' => 'ex4'],
         ]);
     }
 }

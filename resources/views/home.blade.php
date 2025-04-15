@@ -1,5 +1,5 @@
 <x-layouts.header>
-    <div class="relative flex flex-col items-center justify-end min-h-screen bg-white">
+    <div class="relative flex flex-col items-center justify-end bg-white min-h-screen">
         <!-- Judul -->
         <h1 class="text-4xl font-bold text-center">Buat Halaman Pribadi Anda.</h1>
         <p class="text-gray-600 text-center mt-2">Bergabunglah bersama kami, dan buat halaman pribadi anda secara gratis.
@@ -7,9 +7,9 @@
 
         <!-- Tombol -->
         <div class="mt-8">
-            <a href="#" class="px-6 py-2 border border-black text-black rounded-full hover:bg-gray-200">Gabung
+            <a href="/login" class="px-6 py-2 border border-black text-black rounded-full hover:bg-gray-200">Gabung
                 Sekarang</a>
-            <p class="text-sm text-center text-gray-500 mt-2"><a href="#" class="underline">Log In</a></p>
+            <p class="text-sm text-center text-gray-500 mt-2"><a href="" class="underline">Log In</a></p>
         </div>
 
         <!-- Gambar -->

@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
+    public function index()
+    {
+        $user = Auth::user();
+        return view('dashboard.profile', compact('user'));
+    }
     /**
      * Menampilkan form profil.
      */
