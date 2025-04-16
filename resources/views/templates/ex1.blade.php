@@ -43,11 +43,8 @@
                 </div>
             </div>
         </div>
-    </section>
 
-    {{-- Skills / Experience --}}
-    <section class="bg-[#1F1F1F] pb-20 px-6 md:px-12">
-        <div class="max-w-6xl mx-auto">
+        <div class="max-w-6xl mx-auto mt-20">
             <div class="text-center mb-12 relative" data-aos="fade-right">
                 <div class="absolute inset-0 flex justify-center items-center opacity-5">
                     <span class="text-6xl font-bold text-gray-200">Experience</span>
