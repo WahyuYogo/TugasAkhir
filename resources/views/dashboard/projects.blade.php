@@ -90,18 +90,23 @@
                         <td class="px-6 py-4 border-r border-gray-200">{{ $project->title }}</td>
                         <td class="px-6 py-4 border-r border-gray-200">{{ Str::limit($project->description, 50) }}</td>
                         <td class="px-6 py-4 border-r border-gray-200">
-                            <form action="{{ route('projects.edit', $project->id) }}" method="POST">
-                                @csrf
-                                @method('GET')
-                                <button type="submit" class="text-blue-500 hover:underline">Edit</button>
-                            </form>
+                            <div class="flex items-center gap-3">
+                                <a href="{{ route('projects.edit', $project->id) }}"
+                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition">
+                                    Edit
+                                </a>
 
-                            <form action="{{ route('projects.destroy', $project->id) }}" method="POST"
-                                class="inline-block" onsubmit="return confirm('Yakin ingin menghapus project ini?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="font-medium text-red-600 hover:underline">Delete</button>
-                            </form>
+                                <form action="{{ route('projects.destroy', $project->id) }}" method="POST"
+                                    onsubmit="return confirm('Yakin ingin menghapus project ini?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+
                         </td>
                     </tr>
                 @empty

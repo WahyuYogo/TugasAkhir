@@ -46,13 +46,13 @@ class ClaimUrl extends Component
         $user = Auth::user();
         $user->slug = $this->slug;
         $user->save();
-        return redirect()->to('/template');
+        return redirect()->to('/dashboard');
     }
 
     public function mount()
     {
         if (Auth::user()->slug) {
-            return redirect()->route('template')->with('error', 'You have already claimed a URL.');
+            return redirect()->route('dashboard')->with('error', 'You have already claimed a URL.');
         }
     }
 

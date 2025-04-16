@@ -1,5 +1,5 @@
 <x-layouts.sidebar>
-    <h1 class="mb-3">Welcome, {{ Auth::user()->name }}!</h1>
+    {{-- <h1 class="mb-1">Url Anda Adalah <strong>/{{ Auth::user()->slug }}</strong>!</h1> --}}
     {{-- <h1 class="font-semibold text-gray-900 text-2xl mb-3">Statistics</h1>
     <div class="grid grid-cols-3 gap-4 mb-4">
         <div class="max-w-sm py-4 px-6 bg-orange-300 border border-orange-500 rounded-xl shadow-sm">
@@ -29,14 +29,44 @@
     </div> --}}
 
     @if (session('success'))
-            <div class="mb-4 p-4 text-green-700 bg-green-100 rounded-lg">
-                {{ session('success') }}
+        <div class="mb-4 p-4 text-green-700 bg-green-100 rounded-lg">
+            {{ session('success') }}
+        </div>
+    @elseif (session('error'))
+        <div class="mb-4 p-4 text-red-700 bg-red-100 rounded-lg">
+            {{ session('error') }}
+        </div>
+    @endif
+
+    @if (!auth()->user()->userTemplate)
+        <div class="w-full mb-4 p-4 bg-yellow-100 border border-yellow-300 text-yellow-800 rounded-lg">
+            <div class="flex justify-between items-center">
+                <div>
+                    <strong class="font-semibold">Belum Memilih Template</strong>
+                    <p class="text-sm mt-1">Silakan pilih template portofolio terlebih dahulu agar halaman publik kamu
+                        bisa ditampilkan.</p>
+                </div>
+                <a href="{{ route('select-template') }}"
+                    class="ml-4 px-4 py-2 text-sm text-white bg-yellow-500 hover:bg-yellow-600 rounded-lg">
+                    Pilih Template
+                </a>
             </div>
-        @elseif (session('error'))
-            <div class="mb-4 p-4 text-red-700 bg-red-100 rounded-lg">
-                {{ session('error') }}
+        </div>
+    @endif
+    @if (!auth()->user()->job || !auth()->user()->about)
+        <div class="w-full mb-4 p-4 bg-blue-100 border border-blue-300 text-blue-800 rounded-lg">
+            <div class="flex justify-between items-center">
+                <div>
+                    <strong class="font-semibold">Profil Belum Lengkap</strong>
+                    <p class="text-sm mt-1">Lengkapi informasi profil seperti role dan tentang diri kamu.</p>
+                </div>
+                <a href="{{ route('profile.index') }}"
+                    class="ml-4 px-4 py-2 text-sm text-white bg-blue-500 hover:bg-blue-600 rounded-lg">
+                    Lengkapi Profil
+                </a>
             </div>
-        @endif
+        </div>
+    @endif
 
 
     <div class="flex items-center justify-between mt-6 mb-3">
@@ -78,7 +108,7 @@
                             {{ getUsernameFromUrl($link->url) }}
                         </td>
                         <td class="px-6 py-4 border-r border-gray-200">
-                            
+
                             <form action="{{ route('links.destroy', $link->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
@@ -126,16 +156,22 @@
                         <td class="px-6 py-4 border-r border-gray-200">{{ $project->title }}</td>
                         <td class="px-6 py-4 border-r border-gray-200">{{ Str::limit($project->description, 50) }}</td>
                         <td class="px-6 py-4 border-r border-gray-200">
-                            <a href="{{ route('projects.edit', $project->id) }}"
-                                class="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600">
-                                Edit
-                             </a>                             
-                            <form action="{{ route('projects.destroy', $project->id) }}" method="POST"
-                                class="inline-block" onsubmit="return confirm('Yakin ingin menghapus project ini?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="font-medium text-red-600 hover:underline">Delete</button>
-                            </form>
+                            <div class="flex items-center gap-3">
+                                <a href="{{ route('projects.edit', $project->id) }}"
+                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition">
+                                    Edit
+                                </a>
+
+                                <form action="{{ route('projects.destroy', $project->id) }}" method="POST"
+                                    onsubmit="return confirm('Yakin ingin menghapus project ini?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @empty

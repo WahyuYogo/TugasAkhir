@@ -24,9 +24,11 @@
 </style>
 
 <body style="background-color: #f4f4f4">
+
     {{ $slot }}
     @livewireScripts
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
     <script>
         AOS.init({
             once: true,
@@ -36,7 +38,6 @@
             document.getElementById('loader').style.display = 'none';
         });
     </script>
-    <script src="//unpkg.com/alpinejs" defer></script>
 </body>
 
 </html>

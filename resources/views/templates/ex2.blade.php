@@ -1,4 +1,13 @@
 <x-layouts.app>
+    {{-- Loader --}}
+    <div id="loader" class="fixed inset-0 bg-white flex flex-col gap-4 items-center justify-center z-[9999]">
+        <!-- Spinner -->
+        <div class="animate-spin rounded-full h-14 w-14 border-4 border-orange-500 border-t-transparent"></div>
+
+        <!-- Loading Text -->
+        <p class="text-orange-500 font-medium text-lg animate-pulse">Loading...</p>
+    </div>
+
     <div class="w-full mx-auto text-center bg-white min-h-screen">
         <div class="relative">
             <div
@@ -15,10 +24,12 @@
         <div class="mt-6">
             <div class="w-full space-y-4 p-4">
                 @foreach ($user->sociallinks as $link)
-                    <a href="{{ $link->url }}" class="w-full flex items-center justify-center py-2 px-4 text-lg font-medium text-gray-900 border-2 hover:shadow-md border-gray-700 rounded-full shadow-[1px_4px_0px_0px_rgba(0,0,0,1.00)]"><img src="https://www.google.com/s2/favicons?domain={{ parse_url($link->url, PHP_URL_HOST) }}&sz=32"
-                        class="w-6 h-6 me-2" alt="Icon">{{ $link->platform }}</a>
+                    <a href="{{ $link->url }}"
+                        class="w-full flex items-center justify-center py-2 px-4 text-lg font-medium text-gray-900 border-2 hover:shadow-md border-gray-700 rounded-full shadow-[1px_4px_0px_0px_rgba(0,0,0,1.00)]"><img
+                            src="https://www.google.com/s2/favicons?domain={{ parse_url($link->url, PHP_URL_HOST) }}&sz=32"
+                            class="w-6 h-6 me-2" alt="Icon">{{ $link->platform }}</a>
                 @endforeach
             </div>
         </div>
-    
+
 </x-layouts.app>

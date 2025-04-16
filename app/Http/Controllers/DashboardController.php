@@ -10,8 +10,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $projects = auth()->user()->projects;
-        $socialLinks = auth()->user()->socialLinks;
-        return view('dashboard.user', compact('projects', 'socialLinks'));
+        $user = auth()->user();
+        $projects = $user->projects;
+        $socialLinks = $user->socialLinks;
+
+        return view('dashboard.user', compact('user', 'projects', 'socialLinks'));
     }
 }

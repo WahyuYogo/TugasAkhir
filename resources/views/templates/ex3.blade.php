@@ -1,4 +1,13 @@
 <x-layouts.app>
+    {{-- Loader --}}
+    <div id="loader" class="fixed inset-0 bg-white flex flex-col gap-4 items-center justify-center z-[9999]">
+        <!-- Spinner -->
+        <div class="animate-spin rounded-full h-14 w-14 border-4 border-orange-500 border-t-transparent"></div>
+
+        <!-- Loading Text -->
+        <p class="text-orange-500 font-medium text-lg animate-pulse">Loading...</p>
+    </div>
+
     <div class="w-full mx-auto text-center bg-white">
         <div class="relative">
             <div
@@ -53,4 +62,4 @@
             </div>
         </div>
     </div>
-{{-- </x-layouts.app> 
+    {{-- </x-layouts.app>

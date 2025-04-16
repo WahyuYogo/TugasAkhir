@@ -26,6 +26,10 @@ Route::middleware('guest')->group(function () {
     })->name('register');
 });
 
+// Route::get('/logout', function () {
+//     Auth::logout();
+//     return redirect('/login');
+// })->name('logout');
 Route::post('/logout', function () {
     Auth::logout();
     return redirect('/login');
@@ -45,11 +49,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('skills', SkillController::class);
     Route::resource('projects', ProjectController::class);
-    Route::resource('links', SocialLinkController::class);    
+    Route::resource('links', SocialLinkController::class);
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
-Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
-
+    Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 Route::get('/{username}', [PortofolioController::class, 'show'])->name('portfolio.show');
