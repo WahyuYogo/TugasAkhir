@@ -6,7 +6,7 @@
                 <p class="text-base">Easily create and showcase your Link in just a few steps.</p>
             </div>
         </div>
-        <div class="flex items-center justify-center pt h-screen md:w-2/5 bg-white border-l border-gray-200">
+        <div class="flex items-center justify-center h-screen md:w-2/5 bg-white border-l border-gray-200">
             @livewire('auth.login')
         </div>
     </div>

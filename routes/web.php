@@ -12,9 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/test', function () {
-    return view('templates.template01');
-});
+Route::view('/about', 'about')->name('about');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', function () {

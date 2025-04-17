@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="flex items-center justify-center pt h-screen md:w-2/5 bg-white border-l border-gray-200">
-           @livewire('claim-url')
+            @livewire('claim-url')
         </div>
     </div>
 </x-layouts.app>

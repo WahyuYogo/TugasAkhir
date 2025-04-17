@@ -13,7 +13,7 @@
                 class="w-full bg-orange-50 border border-white text-gray-500 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block py-2 px-4"
                 placeholder="Your Name">
             @error('name')
-            <span class="text-red-600 text-sm">{{ $message }}</span>
+                <span class="text-red-600 text-sm">{{ $message }}</span>
             @enderror
         </div>
 
@@ -24,7 +24,7 @@
                 class="w-full bg-orange-50 border border-white text-gray-500 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block py-2 px-4"
                 placeholder="you@example.com">
             @error('email')
-            <span class="text-red-600 text-sm">{{ $message }}</span>
+                <span class="text-red-600 text-sm">{{ $message }}</span>
             @enderror
         </div>
 
@@ -35,7 +35,7 @@
                 class="w-full bg-orange-50 border border-white text-gray-500 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block py-2 px-4"
                 placeholder="Make Your Password">
             @error('password')
-            <span class="text-red-600 text-sm">{{ $message }}</span>
+                <span class="text-red-600 text-sm">{{ $message }}</span>
             @enderror
         </div>
 
@@ -50,8 +50,7 @@
         </div>
 
         <!-- Submit Button -->
-        <button type="submit"
-            class="w-full bg-orange-500 text-white py-2 rounded">
+        <button type="submit" class="w-full bg-orange-500 text-white py-2 rounded">
             Register
         </button>
     </form>

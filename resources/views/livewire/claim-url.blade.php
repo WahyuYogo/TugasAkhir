@@ -2,9 +2,9 @@
     <h2 class="text-2xl font-bold mb-4">Claim URL</h2>
 
     @if (session()->has('error'))
-    <div class="bg-red-200 text-red-800 p-2 rounded mb-4">
-        {{ session('error') }}
-    </div>
+        <div class="bg-red-200 text-red-800 p-2 rounded mb-4">
+            {{ session('error') }}
+        </div>
     @endif
 
     <form wire:submit.prevent="claim">
@@ -17,15 +17,15 @@
             </div>
 
             @error('slug')
-            <span class="text-red-600 text-sm">{{ $message }}</span>
+                <span class="text-red-600 text-sm">{{ $message }}</span>
             @enderror
 
             @if ($slug)
-            @if ($slugAvailable === true)
-            <span class="text-green-600 text-sm"></span>
-            @elseif ($slugAvailable === false)
-            <span class="text-red-600 text-sm"></span>
-            @endif
+                @if ($slugAvailable === true)
+                    <span class="text-green-600 text-sm"></span>
+                @elseif ($slugAvailable === false)
+                    <span class="text-red-600 text-sm"></span>
+                @endif
             @endif
         </div>
 

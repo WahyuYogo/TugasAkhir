@@ -8,51 +8,54 @@
         <p class="text-orange-500 font-medium text-lg animate-pulse">Loading...</p>
     </div>
 
-    <div class="bg-gray-100 py-12">
-        <div class="max-w-4xl mx-auto bg-white p-6 shadow-md rounded-lg">
-            <div class="flex items-center">
-                <img src="{{ asset('images/profile.jpg') }}" class="rounded-full w-24 h-24">
-                <div class="ml-6">
-                    <h1 class="text-3xl font-bold">{{ $user->name }}</h1>
-                    <p class="text-gray-600">{{ $user->role }}</p>
-                </div>
+    <section id="home" class="pt-16 hidden md:flex justify-center items-center">
+        <div class="container mx-auto flex flex-col lg:flex-row gap-10">
+            <!-- Deskripsi Profil -->
+            <div class="lg:w-5/12 lg:order-1 order-2 flex flex-col justify-center text-right">
+                <p class="hidden md:block font-semibold mb-1">{{ $user->job }}</p>
+                <h2 class="text-4xl font-bold">{{ $user->name }}</h2>
+                <p class="text-gray-700 mt-4">
+                    {{ $user->about }}
+                </p>
+                <p class="mt-6">
+                    <a href="#project"
+                        class="text-orange-600 font-medium inline-flex items-center gap-2 hover:underline">
+                        My Project <i class="bi bi-arrow-down-right"></i>
+                    </a>
+                </p>
             </div>
 
-            <div class="mt-6">
-                <h2 class="text-2xl font-semibold">About Me</h2>
-                <p class="text-gray-700 mt-2">{{ $user->about_me }}</p>
-            </div>
-
-            <div class="mt-6 grid grid-cols-2 gap-4">
-                <div>
-                    <h2 class="text-xl font-semibold">Skills</h2>
-                    <ul class="list-disc list-inside mt-2 text-gray-700">
-                        @foreach ($user->skills as $skill)
-                            <li>{{ $skill }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-
-                <div>
-                    <h2 class="text-xl font-semibold">Projects</h2>
-                    <ul class="list-disc list-inside mt-2 text-gray-700">
-                        @foreach ($user->projects as $project)
-                            <li>
-                                <a href="{{ $project->url }}" class="text-blue-600">{{ $project->name }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-
-            <div class="mt-6">
-                <h2 class="text-xl font-semibold">Follow Me</h2>
-                <div class="flex gap-4 mt-2">
-                    @foreach ($user->social_links as $link)
-                        <a href="{{ $link->url }}" class="text-blue-500 hover:underline">{{ $link->platform }}</a>
-                    @endforeach
+            <!-- Gambar Profil dan Icon -->
+            <div class="lg:w-6/12 lg:order-2 order-1 flex flex-col gap-4">
+                <img src="{{ asset('storage/' . $user->profile_photo) }}" alt="Profile Image"
+                    class="rounded-lg shadow w-full max-h-48 object-cover">
+                <div class="flex items-center gap-4">
+                    <i class="bi bi-heart text-2xl font-bold"></i>
+                    <i class="bi bi-send text-2xl font-bold text-gray-800"></i>
+                    <i class="bi bi-bookmark ms-auto text-2xl font-bold text-gray-800"></i>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Mobile Version -->
+    <section class="md:hidden pt-4 pb-4">
+        <div class="container mx-auto">
+            <p class="text-xl font-semibold text-center">{{ $user->name }}</p>
+            <div class="grid grid-cols-4 gap-4 items-center my-4">
+                <div class="col-span-1 flex justify-center">
+                    <img src="{{ asset('storage/' . $user->profile_photo) }}" alt="" class="rounded-full w-20">
+                </div>
+                <div class="text-center text-sm">5 Postingan</div>
+                <div class="text-center text-sm">0 Pengikut</div>
+                <div class="text-center text-sm">5 Mengikuti</div>
+            </div>
+            <p class="text-sm text-gray-700 text-justify">
+                <span class="font-bold">Seorang front-end developer</span> dengan passion yang mendalam terhadap desain
+                yang elegan dan fungsionalitas yang efisien. Dengan pengalaman dalam berbagai proyek web, saya selalu
+                berusaha menciptakan antarmuka pengguna yang intuitif dan responsif.
+            </p>
+        </div>
+    </section>
+
 </x-layouts.app>

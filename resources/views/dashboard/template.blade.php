@@ -1,8 +1,8 @@
 <x-layouts.sidebar>
 
     @php
-    $userTemplate = auth()->user()->userTemplate->template_id ?? null;
-@endphp
+        $userTemplate = auth()->user()->userTemplate->template_id ?? null;
+    @endphp
 
     <div class="max-w-7xl mx-auto p-6">
         <h2 class="text-2xl font-bold text-center mb-6">Pilih Template Portofolio</h2>

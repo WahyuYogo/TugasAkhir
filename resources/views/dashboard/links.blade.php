@@ -5,7 +5,12 @@
         <!-- Form Tambah Social Link -->
         <form action="{{ route('links.store') }}" method="POST" class="mt-4">
             @csrf
-            <label for="social-link" class="block text-sm font-medium text-gray-700">Add New Link</label>
+            <div class="flex flex-col gap-2 mb-3">
+                <label for="username" class="text-gray-900 font-semibold">Display Title</label>
+                <input type="text" id="username" name="username" required placeholder="Masukkan Display Title"
+                    class="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 focus:ring-orange-500 focus:border-orange-500">
+            </div>
+            <label for="social-link" class="text-gray-900 font-semibold">Add New Link</label>
             <div class="relative flex items-center mt-2">
                 <!-- Ikon Platform -->
                 <div class="absolute left-3">
@@ -18,7 +23,7 @@
                 </div>
                 <!-- Input Link -->
                 <input type="url" id="social-link" name="url" required
-                    class="pl-10 p-2 w-full border rounded-md focus:ring-orange-500 focus:border-orange-500"
+                    class="pl-10 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 focus:ring-orange-500 focus:border-orange-500"
                     placeholder="Enter your social media URL" oninput="updateSocialPreview(this.value)">
             </div>
             <!-- Tombol Submit -->
@@ -29,11 +34,11 @@
 
 
         @if (session('success'))
-            <div class="mb-4 p-4 text-green-700 bg-green-100 rounded-lg">
+            <div class="my-4 p-4 text-green-700 bg-green-100 rounded-lg">
                 {{ session('success') }}
             </div>
         @elseif (session('error'))
-            <div class="mb-4 p-4 text-red-700 bg-red-100 rounded-lg">
+            <div class="my-4 p-4 text-red-700 bg-red-100 rounded-lg">
                 {{ session('error') }}
             </div>
         @endif
@@ -43,8 +48,8 @@
                 <thead class="text-xs text-black uppercase bg-gray-50 border-b border-gray-200">
                     <tr>
                         <th class="px-4 py-3 border-r border-gray-200">No</th>
-                        <th class="px-4 py-3 border-r border-gray-200">Platform</th>
-                        <th class="px-4 py-3 border-r border-gray-200">Username</th>
+                        <th class="px-4 py-3 border-r border-gray-200">Display</th>
+                        <th class="px-4 py-3 border-r border-gray-200">Link</th>
                         <th class="px-4 py-3 border-r border-gray-200">Actions</th>
                     </tr>
                 </thead>
@@ -53,19 +58,14 @@
                         <tr class="bg-white border-b border-gray-200">
                             <td class="px-4 py-3 border-r border-gray-200">{{ $index + 1 }}</td>
                             <td class="px-4 py-3 border-r border-gray-200 flex items-center space-x-3">
-                                <img src="https://www.google.com/s2/favicons?domain={{ parse_url($link->url, PHP_URL_HOST) }}&sz=32"
-                                    class="w-6 h-6" alt="Icon">
-                                <span>{{ parse_url($link->url, PHP_URL_HOST) }}</span>
+                                <span>{{ $link->username }}</span>
                             </td>
-                            <td class="px-4 py-3 border-r border-gray-200">{{ getUsernameFromUrl($link->url) }}</td>
+                            <td class="px-4 py-3 border-r border-gray-200">{{ $link->url }}</td>
                             <td class="px-4 py-3 border-r border-gray-200">
-                                <a href="{{ route('links.edit', $link->id) }}"
-                                    class="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600">Edit</a>
-
                                 <form action="{{ route('links.destroy', $link->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Are you sure?')"
+                                    <button type="submit" onclick="return confirm('Yakin Nih?')"
                                         class="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600">
                                         Delete
                                     </button>

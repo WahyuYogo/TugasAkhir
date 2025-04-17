@@ -29,17 +29,17 @@ class SocialLinkController extends Controller
         }
 
         $request->validate([
-            'url' => 'required|url'
+            'url' => 'required|url',
+            'username' => 'required|string'
         ]);
 
         // Deteksi platform dan username berdasarkan URL
         $platform = $this->detectPlatform($request->url);
-        $username = $this->extractUsername($request->url, $platform);
 
         auth()->user()->socialLinks()->create([
             'platform' => $platform,
             'url' => $request->url,
-            'username' => $username
+            'username' =>  $request->username
         ]);
 
         return back()->with('success', 'Social link added successfully.');

@@ -1,5 +1,5 @@
 <x-layouts.sidebar>
-    <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow">
+    <div class="w-full mx-auto bg-white p-6 rounded-lg shadow">
         @if (session('success'))
             <div class="p-4 mb-4 text-green-700 bg-green-100 rounded-lg">
                 {{ session('success') }}

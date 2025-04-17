@@ -1,5 +1,5 @@
 <x-layouts.app>
-    <nav class="bg-zinc-900">
+    <nav class="bg-zinc-900 sticky w-full z-20 top-0 start-0">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-3">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <span class="self-center text-2xl font-bold text-white">Meisho</span>
@@ -20,20 +20,17 @@
                 <ul
                     class="font-medium flex flex-col p-4 mt-4 border border-zinc-600 rounded-lg bg-zinc-900 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-zinc-900">
                     <li>
-                        <a href="{{ url('/') }}"
-                            class="block py-2 px-3 text-white rounded-sm hover:bg-zinc-600 transition">Home</a>
+                        <a href="{{ url('/') }}" class="block py-2 px-3 text-white rounded-sm transition">Home</a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="#"
-                            class="block py-2 px-3 text-white rounded-sm hover:bg-zinc-600 transition">Explore</a>
+                            class="block py-2 px-3 text-white rounded-sm transition">Explore</a>
+                    </li> --}}
+                    <li>
+                        <a href="/about" class="block py-2 px-3 text-white rounded-sm transition">About Us</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-white rounded-sm hover:bg-zinc-600 transition">About Us</a>
-                    </li>
-                    <li>
-                        <a href="{{ url('register') }}"
-                            class="block py-2 px-3 text-white rounded-sm hover:bg-zinc-600 transition">
+                        <a href="{{ url('register') }}" class="block py-2 px-3 text-white rounded-sm transition">
                             Register
                         </a>
                     </li>

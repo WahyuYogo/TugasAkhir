@@ -1,19 +1,22 @@
 <x-layouts.header>
-    <div class="relative flex flex-col items-center justify-end bg-white" style="height: 80vh;">
+    <div class="relative flex flex-col items-center justify-end bg-white md:min-h-screen">
         <!-- Judul -->
-        <h1 class="text-4xl font-bold text-center">Buat Halaman Pribadi Anda.</h1>
-        <p class="text-gray-600 text-center mt-2">Bergabunglah bersama kami, dan buat halaman pribadi anda secara gratis.
-        </p>
+        <div class="px-6">
+            <h1 class="text-4xl font-bold text-center mt-20">Buat Halaman Pribadi Anda.</h1>
+            <p class="text-gray-600 text-center mt-2">Bergabunglah bersama kami, dan buat halaman pribadi anda secara
+                gratis.
+            </p>
+        </div>
 
         <!-- Tombol -->
-        <div class="mt-8">
+        <div class="mt-8" data-aos="fade-up">
             <a href="/register" class="px-6 py-2 border border-black text-black rounded-full hover:bg-gray-200">Gabung
                 Sekarang</a>
-            <p class="text-sm text-center text-gray-500 mt-2"><a href="/login" class="underline">Log In</a></p>
+            <p class="text-sm text-center text-gray-500 mt-4"><a href="/login" class="underline">Log In</a></p>
         </div>
 
         <!-- Gambar -->
-        <div class="relative flex flex-row items-end mt-10 gap-4 z-10 overflow-x-auto">
+        <div class="relative flex flex-row items-end mt-10 gap-4 z-10 overflow-x-auto" data-aos="fade-up">
             <img class="hidden md:block min-w-[250px] max-w-[300px] h-auto object-contain border border-gray-200 rounded-xl"
                 src="{{ asset('images/pc02.jpg') }}" alt="">
             <img class="min-w-[250px] max-w-[300px] h-auto object-contain border border-gray-200 rounded-xl"
@@ -44,7 +47,7 @@
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 mt-6 p-4">
                 @foreach ($templates as $template)
-                    <a href="/register">
+                    <a href="/register" data-aos="zoom-in">
                         <img class="rounded-xl border border-gray-300 transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0"
                             src="{{ asset('images/' . $template->preview_image) }}" alt="{{ $template->name }}">
                         <h1 class="font-semibold text-start mt-3">{{ $template->name }}</h1>
@@ -67,7 +70,7 @@
                 Tunjukkan siapa kamu dan karya terbaikmu ke dunia dengan mudah. Website ini membantumu membuat
                 page yang modern, responsif, dan siap dibagikan ke siapa saja — tanpa perlu skill coding!
             </p>
-            <a href="#"
+            <a href="/register"
                 class="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-white rounded-lg bg-zinc-900 hover:bg-zinc-800 focus:ring-4 focus:ring-zinc-300">
                 Mulai Sekarang
                 <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -85,10 +88,25 @@
             <h2 class="text-2xl font-bold text-center mb-8">Jelajahi Page Pengguna Lain</h2>
 
             <div class="flex flex-row justify-center gap-6">
-                @foreach ($user->take(6) as $card)
-                    <img class="w-10 h-10 rounded-full" src="{{ asset('storage/' . $card->profile_photo) }}"
-                        alt="Rounded avatar">
+                @foreach ($user->take(6) as $index => $card)
+                    <a data-popover-target="popover-{{ $index }}" href="{{ $card->slug }}"
+                        class="relative inline-block">
+                        <img class="w-10 h-10 rounded-full" src="{{ asset('storage/' . $card->profile_photo) }}"
+                            alt="Rounded avatar">
+
+                        <div data-popover id="popover-{{ $index }}" role="tooltip"
+                            class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-xs opacity-0">
+                            <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg">
+                                <h3 class="font-semibold text-gray-900">{{ $card->name }}</h3>
+                            </div>
+                            <div class="px-3 py-2">
+                                <p>{{ $card->about }}</p>
+                            </div>
+                            <div data-popper-arrow></div>
+                        </div>
+                    </a>
                 @endforeach
+
             </div>
         </div>
         <footer class=" border-t-2 rounded-lg m-4">
