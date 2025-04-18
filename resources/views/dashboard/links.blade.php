@@ -43,30 +43,36 @@
             </div>
         @endif
         <!-- Daftar Link -->
-        <div class="mt-6">
-            <table class="w-full text-sm text-left rtl:text-right text-black border border-gray-200 rounded-lg">
+        <div class="mt-6 overflow-x-auto rounded-lg border border-gray-200">
+            <table class="min-w-full text-sm text-left rtl:text-right text-black">
                 <thead class="text-xs text-black uppercase bg-gray-50 border-b border-gray-200">
                     <tr>
-                        <th class="px-4 py-3 border-r border-gray-200">No</th>
-                        <th class="px-4 py-3 border-r border-gray-200">Display</th>
-                        <th class="px-4 py-3 border-r border-gray-200">Link</th>
-                        <th class="px-4 py-3 border-r border-gray-200">Actions</th>
+                        <th class="px-4 py-3 border-r border-gray-200 whitespace-nowrap">No</th>
+                        <th class="px-4 py-3 border-r border-gray-200 whitespace-nowrap">Display</th>
+                        <th class="px-4 py-3 border-r border-gray-200 whitespace-nowrap">Link</th>
+                        <th class="px-4 py-3 border-r border-gray-200 whitespace-nowrap">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($socialLinks as $index => $link)
                         <tr class="bg-white border-b border-gray-200">
-                            <td class="px-4 py-3 border-r border-gray-200">{{ $index + 1 }}</td>
-                            <td class="px-4 py-3 border-r border-gray-200 flex items-center space-x-3">
-                                <span>{{ $link->username }}</span>
+                            <td class="px-4 py-3 border-r border-gray-200 whitespace-nowrap">{{ $index + 1 }}</td>
+                            <td class="px-4 py-3 border-r border-gray-200 whitespace-nowrap">
+                                <div class="flex items-center space-x-3">
+                                    <span>{{ $link->username }}</span>
+                                </div>
                             </td>
-                            <td class="px-4 py-3 border-r border-gray-200">{{ $link->url }}</td>
-                            <td class="px-4 py-3 border-r border-gray-200">
-                                <form action="{{ route('links.destroy', $link->id) }}" method="POST">
+                            <td class="px-4 py-3 border-r border-gray-200 whitespace-nowrap">
+                                <a href="{{ $link->url }}" class="text-blue-600 hover:underline"
+                                    target="_blank">{{ $link->url }}</a>
+                            </td>
+                            <td class="px-4 py-3 border-r border-gray-200 whitespace-nowrap">
+                                <form action="{{ route('links.destroy', $link->id) }}" method="POST"
+                                    onsubmit="return confirm('Yakin Nih?')">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Yakin Nih?')"
-                                        class="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600">
+                                    <button
+                                        class="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition duration-200">
                                         Delete
                                     </button>
                                 </form>
@@ -76,6 +82,7 @@
                 </tbody>
             </table>
         </div>
+
     </div>
 
     <script>

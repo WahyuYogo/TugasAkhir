@@ -1,6 +1,6 @@
 <x-layouts.sidebar>
     <div class="w-full mx-auto p-6 bg-white rounded-lg shadow-md">
-        <h2 class="text-2xl font-bold text-gray-800 mb-4">Kelola Skill</h2>
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Tambahkan Skill/Experience</h2>
 
         {{-- Alert success/error --}}
         @if (session('success'))

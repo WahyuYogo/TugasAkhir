@@ -27,7 +27,8 @@
                             class="block py-2 px-3 text-white rounded-sm transition">Explore</a>
                     </li> --}}
                     <li>
-                        <a href="/about" class="block py-2 px-3 text-white rounded-sm transition">About Us</a>
+                        <a href="{{ url('/about') }}" class="block py-2 px-3 text-white rounded-sm transition">About
+                            Us</a>
                     </li>
                     <li>
                         <a href="{{ url('register') }}" class="block py-2 px-3 text-white rounded-sm transition">

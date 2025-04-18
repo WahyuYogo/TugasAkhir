@@ -13,7 +13,7 @@
             </svg>
         </button>
 
-        <a href="/{{ auth()->user()->slug }}"
+        <a href="{{ url('/' . auth()->user()->slug) }}"
             class="inline-flex items-center p-2 mt-2 me-3 font-bold text-sm text-orange-500 rounded-lg sm:hidden hover:bg-orange-100 focus:outline-none focus:ring-2 focus:ring-orange-200 dark:text-orange-500 dark:hover:bg-orange-300 dark:focus:ring-orange-600">
             <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                 fill="none" viewBox="0 0 24 24">

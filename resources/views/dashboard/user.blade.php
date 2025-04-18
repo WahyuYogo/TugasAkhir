@@ -76,7 +76,7 @@
     {{-- TABEL SHORTLINK --}}
     <div class="flex items-center justify-between mt-6 mb-3">
         <h1 class="font-semibold text-gray-900 text-2xl">ShortLink</h1>
-        <a href="/links"
+        <a href="{{ url('/links') }}"
             class="ms-auto text-white bg-orange-500 hover:bg-orange-700 font-medium rounded-lg text-sm px-4 py-2">Add
             Links</a>
     </div>
@@ -121,15 +121,11 @@
                                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-36 absolute right-0 mt-2">
                                     <ul class="py-2 text-sm text-gray-700">
                                         <li>
-                                            <a href="{{ route('links.edit', $link->id) }}"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                        </li>
-                                        <li>
                                             <form action="{{ route('links.destroy', $link->id) }}" method="POST"
                                                 onsubmit="return confirm('Yakin Nih?');">
                                                 @csrf @method('DELETE')
                                                 <button type="submit"
-                                                    class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                    class="w-full text-left px-4 py-2 hover:bg-gray-100">
                                                     Delete
                                                 </button>
                                             </form>
@@ -148,7 +144,7 @@
     {{-- TABEL PROJECT --}}
     <div class="flex items-center justify-between mt-6 mb-3">
         <h1 class="font-semibold text-gray-900 text-2xl">Projects</h1>
-        <a href="/projects"
+        <a href="{{ url('/projects') }}"
             class="ms-auto text-white bg-orange-500 hover:bg-orange-700 font-medium rounded-lg text-sm px-4 py-2">Add
             Project</a>
     </div>
@@ -225,7 +221,7 @@
     {{-- TABEL SKILL --}}
     <div class="flex items-center justify-between mt-6 mb-3">
         <h1 class="font-semibold text-gray-900 text-2xl">Experience</h1>
-        <a href="/skills"
+        <a href="{{ url('/skills') }}"
             class="ms-auto text-white bg-orange-500 hover:bg-orange-700 font-medium rounded-lg text-sm px-4 py-2">Add</a>
     </div>
 
@@ -282,39 +278,5 @@
             </tbody>
         </table>
     </div>
-
-    <script>
-        window.addEventListener('load', function() {
-            const clipboard = FlowbiteInstances.getInstance('CopyClipboard', 'npm-install-copy-button');
-            const tooltip = FlowbiteInstances.getInstance('Tooltip', 'tooltip-copy-npm-install-copy-button');
-
-            const $defaultIcon = document.getElementById('default-icon');
-            const $successIcon = document.getElementById('success-icon');
-
-            const $defaultTooltipMessage = document.getElementById('default-tooltip-message');
-            const $successTooltipMessage = document.getElementById('success-tooltip-message');
-
-            clipboard.updateOnCopyCallback(() => {
-                showSuccess();
-                setTimeout(resetToDefault, 2000);
-            });
-
-            const showSuccess = () => {
-                $defaultIcon.classList.add('hidden');
-                $successIcon.classList.remove('hidden');
-                $defaultTooltipMessage.classList.add('hidden');
-                $successTooltipMessage.classList.remove('hidden');
-                tooltip.show();
-            }
-
-            const resetToDefault = () => {
-                $defaultIcon.classList.remove('hidden');
-                $successIcon.classList.add('hidden');
-                $defaultTooltipMessage.classList.remove('hidden');
-                $successTooltipMessage.classList.add('hidden');
-                tooltip.hide();
-            }
-        });
-    </script>
 
 </x-layouts.sidebar>
