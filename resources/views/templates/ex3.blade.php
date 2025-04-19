@@ -35,7 +35,8 @@
         <h3>Kontak</h3>
         @foreach ($user->sociallinks as $link)
             <h5>{{ $link->username }}</h5>
-            <a href="{{ $link->url }}">
+            <a href="{{ Str::startsWith($link->url, ['http://', 'https://']) ? $link->url : 'https://' . $link->url }}"
+                target="_blank">
                 {{ $link->url }}
             </a>
         @endforeach

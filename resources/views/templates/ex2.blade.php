@@ -24,7 +24,8 @@
         <div class="mt-6">
             <div class="w-full space-y-4 p-4 flex flex-col items-center justify-center">
                 @foreach ($user->sociallinks as $link)
-                    <a href="{{ $link->url }}"
+                    <a href="{{ Str::startsWith($link->url, ['http://', 'https://']) ? $link->url : 'https://' . $link->url }}"
+                        target="_blank"
                         class="w-full max-w-2xl py-2 px-4 flex items-center justify-center text-lg font-bold text-gray-900 border-2 border-gray-700 rounded-full shadow-[1px_4px_0px_0px_rgba(0,0,0,1.00)]">{{ $link->username }}</a>
                 @endforeach
             </div>

@@ -112,7 +112,8 @@
 
             <div class="flex flex-wrap justify-center gap-4">
                 @foreach ($user->sociallinks as $link)
-                    <a href="{{ $link->url }}"
+                    <a href="{{ Str::startsWith($link->url, ['http://', 'https://']) ? $link->url : 'https://' . $link->url }}"
+                        target="_blank"
                         class="flex items-center bg-[#232323] border hover:border-orange-400 text-white px-4 py-2 rounded-full hover:bg-orange-400 hover:text-white transition"
                         data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                         <img src="https://www.google.com/s2/favicons?domain={{ parse_url($link->url, PHP_URL_HOST) }}&sz=32"

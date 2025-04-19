@@ -118,7 +118,8 @@
                             </div>
                         </td>
                         <td class="px-4 py-3 border-r border-gray-200 whitespace-nowrap">
-                            <a href="{{ $link->url }}" target="_blank" class="text-blue-600 hover:underline">
+                            <a href="{{ Str::startsWith($link->url, ['http://', 'https://']) ? $link->url : 'https://' . $link->url }}"
+                                target="_blank" class="text-blue-600 hover:underline">
                                 {{ $link->url }}
                             </a>
                         </td>
