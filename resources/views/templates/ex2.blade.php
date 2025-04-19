@@ -8,15 +8,15 @@
         <p class="text-orange-500 font-medium text-lg animate-pulse">Loading...</p>
     </div>
 
-    <div class="w-full mx-auto text-center bg-white min-h-screen">
-        <div class="relative">
+    <div class="w-full mx-auto text-center justify-center bg-white min-h-screen">
+        <div class="relative flex justify-center">
             <div
                 class="relative h-48 w-full bg-[linear-gradient(to_right,#80808012_2px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
                 <div class="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-white to-transparent"></div>
             </div>
 
             <img src="{{ asset('storage/' . $user->profile_photo) }}"
-                class="rounded-full w-36 h-36 border absolute -bottom-12 left-1/2 transform -translate-x-1/2 grayscale hover:grayscale-0 transition">
+                class="rounded-full w-36 h-36 border absolute -bottom-12 grayscale hover:grayscale-0 transition">
         </div>
 
         <h1 class="text-3xl font-bold mt-16">{{ $user->name }}</h1>
@@ -29,5 +29,5 @@
                 @endforeach
             </div>
         </div>
-
+    </div>
 </x-layouts.app>

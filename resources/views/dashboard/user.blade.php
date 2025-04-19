@@ -7,6 +7,23 @@
     @endif
 
     {{-- Notifikasi jika belum memilih template --}}
+    @if (!auth()->user()->slug)
+        <div class="w-full mb-4 p-4 bg-red-100 border border-red-300 text-red-800 rounded-lg">
+            <div class="flex justify-between items-center">
+                <div>
+                    <strong class="font-semibold">Belum Memiki Url</strong>
+                    <p class="text-sm mt-1">Silakan Claim Url terlebih dahulu agar halaman publik kamu bisa
+                        ditampilkan.</p>
+                </div>
+                <a href="{{ route('claim.url') }}"
+                    class="ml-4 px-4 py-2 text-sm text-white bg-red-500 hover:bg-red-600 rounded-lg">
+                    Claim Url
+                </a>
+            </div>
+        </div>
+    @endif
+
+    {{-- Notifikasi jika belum memilih template --}}
     @if (!auth()->user()->userTemplate)
         <div class="w-full mb-4 p-4 bg-yellow-100 border border-yellow-300 text-yellow-800 rounded-lg">
             <div class="flex justify-between items-center">
