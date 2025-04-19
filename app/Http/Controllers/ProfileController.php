@@ -30,7 +30,7 @@ class ProfileController extends Controller
         $user = Auth::user();
 
         $request->validate([
-            'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'profile_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
             'job' => 'required|string|max:255',
             'about' => 'required|string',
         ]);
@@ -65,7 +65,7 @@ class ProfileController extends Controller
 
         // Validasi Input
         $request->validate([
-            'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
             'job' => 'required|string|max:255',
             'about' => 'required|string'
         ]);

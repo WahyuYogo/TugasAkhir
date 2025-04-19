@@ -41,7 +41,7 @@ class ProjectController extends Controller
         $request->validate([
             'title'       => 'required|string|max:255',
             'description' => 'required|string',
-            'image'       => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Maksimal 2MB
+            'image'       => 'required|image|mimes:jpeg,png,jpg,gif|max:5120', // Maksimal 2MB
         ], [
             'image.required' => 'Gambar wajib diunggah.',
             'image.image'    => 'File harus berupa gambar.',
@@ -76,13 +76,13 @@ class ProjectController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Project $project)
-{
-    if (auth()->id() !== $project->user_id) {
-        abort(403);
-    }
+    {
+        if (auth()->id() !== $project->user_id) {
+            abort(403);
+        }
 
-    return view('dashboard.edit', compact('project'));
-}
+        return view('dashboard.edit', compact('project'));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -92,28 +92,28 @@ class ProjectController extends Controller
         if (auth()->id() !== $project->user_id) {
             abort(403);
         }
-    
+
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'link' => 'nullable|url',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
         ]);
-    
+
         $data = $request->only(['title', 'description', 'link']);
-    
+
         if ($request->hasFile('image')) {
             // Hapus gambar lama
             if ($project->image && Storage::disk('public')->exists($project->image)) {
                 Storage::disk('public')->delete($project->image);
             }
-    
+
             // Upload gambar baru
             $data['image'] = $request->file('image')->store('projects', 'public');
         }
-    
+
         $project->update($data);
-    
+
         return redirect()->route('dashboard')->with('success', 'Project berhasil diperbarui.');
     }
 

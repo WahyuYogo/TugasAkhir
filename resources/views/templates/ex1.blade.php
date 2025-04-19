@@ -76,24 +76,46 @@
                 <h2 class="text-4xl font-bold text-gray-200 relative z-10">Projects</h2>
             </div>
 
-            <!-- Grid Card -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
-                @foreach ($user->projects as $project)
-                    <div data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 }}">
-                        <div
-                            class="cursor-pointer rounded-lg border border-gray-700 bg-[#1F1F1F] group overflow-hidden transition-shadow hover:shadow-lg">
-                            <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}"
-                                class="w-full h-48 object-cover rounded-t-lg transition-transform duration-300 group-hover:scale-105">
-                            <div class="p-4">
-                                <h1 class="text-lg font-semibold text-white">{{ $project->title }}</h1>
-                                <p class="text-sm text-gray-400 leading-relaxed mt-2 truncate">
-                                    {{ $project->description }}
-                                </p>
+            <!-- Wrapper Alpine.js -->
+            <div x-data="{ showModal: false, modalImage: '', modalTitle: '', modalDescription: '' }">
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
+                    @foreach ($user->projects as $project)
+                        <div data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 }}">
+                            <div class="cursor-pointer rounded-lg border border-gray-700 bg-[#1F1F1F] group overflow-hidden transition-shadow hover:shadow-lg"
+                                @click="showModal = true; modalImage = '{{ asset('storage/' . $project->image) }}'; modalTitle = '{{ $project->title }}'; modalDescription = `{{ $project->description }}`">
+
+                                <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}"
+                                    class="w-full h-48 object-cover rounded-t-lg transition-transform duration-300 group-hover:scale-105">
+
+                                <div class="p-4">
+                                    <h1 class="text-lg font-semibold text-white truncate">{{ $project->title }}</h1>
+                                    <p class="text-sm text-gray-400 leading-relaxed mt-2 truncate">
+                                        {{ $project->description }}
+                                    </p>
+                                </div>
                             </div>
                         </div>
+                    @endforeach
+                </div>
+                <!-- Modal -->
+                <div x-show="showModal" x-transition
+                    class="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4"
+                    @click.self="showModal = false">
+
+                    <div class="bg-[#1F1F1F] rounded-lg max-w-xl w-full overflow-hidden shadow-lg text-white">
+                        <img :src="modalImage" alt="" class="w-full max-h-[600px] object-cover">
+                        <div class="p-5">
+                            <h2 class="text-2xl font-bold mb-2" x-text="modalTitle"></h2>
+                            <p class="text-sm text-gray-300" x-text="modalDescription"></p>
+                            <button class="mt-4 px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600"
+                                @click="showModal = false">Tutup</button>
+                        </div>
                     </div>
-                @endforeach
+                </div>
+
             </div>
+
         </div>
     </section>
 

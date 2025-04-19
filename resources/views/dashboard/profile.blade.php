@@ -108,7 +108,7 @@
                     <label for="imageUpload" class="cursor-pointer flex flex-col justify-center items-center">
                         @if ($user->profile_photo)
                             <img id="imagePreview" src="{{ asset('storage/' . $user->profile_photo) }}"
-                                class="object-contain rounded-lg w-full h-48">
+                                class="object-cover rounded-full w-44 h-44">
                             <div id="uploadPlaceholder" class="hidden flex-col justify-center items-center">
                                 <!-- Icon Placeholder -->
                                 <svg class="text-gray-800 w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
@@ -122,7 +122,7 @@
                                 <p class="text-black text-xs font-medium">Upload your image here</p>
                             </div>
                         @else
-                            <img id="imagePreview" class="hidden object-contain rounded-lg">
+                            <img id="imagePreview" class="hidden h-48 object-contain rounded-full">
                             <div id="uploadPlaceholder" class="flex flex-col justify-center items-center">
                                 <!-- Icon Placeholder -->
                                 <svg class="text-gray-800 w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
@@ -139,7 +139,7 @@
                     </label>
                     <input id="imageUpload" type="file" name="profile_photo" class="hidden" accept="image/*"
                         onchange="previewImage(event)">
-                    <small class="text-gray-500 mt-2">Kosongkan jika tidak ingin mengubah foto</small>
+                    <small class="text-gray-500 mt-2">Biarkan jika tidak ingin mengubah foto</small>
                 </div>
 
                 {{-- Job --}}

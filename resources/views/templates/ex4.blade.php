@@ -8,54 +8,87 @@
         <p class="text-orange-500 font-medium text-lg animate-pulse">Loading...</p>
     </div>
 
-    <section id="home" class="pt-16 hidden md:flex justify-center items-center">
-        <div class="container mx-auto flex flex-col lg:flex-row gap-10">
-            <!-- Deskripsi Profil -->
-            <div class="lg:w-5/12 lg:order-1 order-2 flex flex-col justify-center text-right">
-                <p class="hidden md:block font-semibold mb-1">{{ $user->job }}</p>
-                <h2 class="text-4xl font-bold">{{ $user->name }}</h2>
-                <p class="text-gray-700 mt-4">
-                    {{ $user->about }}
-                </p>
-                <p class="mt-6">
-                    <a href="#project"
-                        class="text-orange-600 font-medium inline-flex items-center gap-2 hover:underline">
-                        My Project <i class="bi bi-arrow-down-right"></i>
-                    </a>
-                </p>
+    <div class="hidden md:flex items-center justify-center min-h-screen text-center">
+        <h1 class="text-2xl font-bold text-gray-600">Halaman ini hanya untuk mobile view</h1>
+    </div>
+
+    <div class="md:hidden px-10">
+        <div class="w-full mx-auto my-4 text-start space-y-4">
+            <!-- Foto Profil -->
+            <div class="flex justify-start">
+                <img src="{{ asset('storage/' . $user->profile_photo) }}" alt="Profile"
+                    class="w-24 h-24 rounded-full object-cover">
             </div>
 
-            <!-- Gambar Profil dan Icon -->
-            <div class="lg:w-6/12 lg:order-2 order-1 flex flex-col gap-4">
-                <img src="{{ asset('storage/' . $user->profile_photo) }}" alt="Profile Image"
-                    class="rounded-lg shadow w-full max-h-48 object-cover">
-                <div class="flex items-center gap-4">
-                    <i class="bi bi-heart text-2xl font-bold"></i>
-                    <i class="bi bi-send text-2xl font-bold text-gray-800"></i>
-                    <i class="bi bi-bookmark ms-auto text-2xl font-bold text-gray-800"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mobile Version -->
-    <section class="md:hidden pt-4 pb-4">
-        <div class="container mx-auto">
-            <p class="text-xl font-semibold text-center">{{ $user->name }}</p>
-            <div class="grid grid-cols-4 gap-4 items-center my-4">
-                <div class="col-span-1 flex justify-center">
-                    <img src="{{ asset('storage/' . $user->profile_photo) }}" alt="" class="rounded-full w-20">
-                </div>
-                <div class="text-center text-sm">5 Postingan</div>
-                <div class="text-center text-sm">0 Pengikut</div>
-                <div class="text-center text-sm">5 Mengikuti</div>
-            </div>
-            <p class="text-sm text-gray-700 text-justify">
-                <span class="font-bold">Seorang front-end developer</span> dengan passion yang mendalam terhadap desain
-                yang elegan dan fungsionalitas yang efisien. Dengan pengalaman dalam berbagai proyek web, saya selalu
-                berusaha menciptakan antarmuka pengguna yang intuitif dan responsif.
+            <!-- Nama dan Deskripsi -->
+            <h1 class="text-2xl font-bold text-gray-900">{{ $user->name }}</h1>
+            <p class="text-gray-700 font-medium">{{ $user->about }}
             </p>
         </div>
-    </section>
+
+
+        <div x-data="{ showModal: false, modalImage: '', modalTitle: '', modalDescription: '' }">
+            {{-- Galeri --}}
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-4">
+                @foreach ($user->projects as $project)
+                    <div class="relative w-full pb-[125%] group overflow-hidden rounded-lg cursor-pointer"
+                        @click="showModal = true; modalImage = '{{ asset('storage/' . $project->image) }}'; modalTitle = '{{ $project->title }}'; modalDescription = '{{ $project->description }}'">
+
+                        <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                        <!-- Overlay -->
+                        <div
+                            class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-center text-white p-4">
+                            <h3 class="text-lg font-bold">{{ $project->title }}</h3>
+                            <p class="text-sm mt-2">{{ $project->description }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            {{-- Modal --}}
+            <div x-show="showModal" class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
+                x-transition @click.self="showModal = false">
+                <div class="bg-white rounded-lg overflow-hidden max-w-xl w-full shadow-lg">
+                    <img :src="modalImage" alt="" class="w-full object-cover max-h-[600px]">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold text-gray-800" x-text="modalTitle"></h3>
+                        <p class="text-gray-600 mt-2" x-text="modalDescription"></p>
+                        <button class="mt-4 px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-600"
+                            @click="showModal = false">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="w-full border-t border-gray-300">
+
+        <div class="grid grid-cols-2 gap-4 mb-10 mt-4">
+            @foreach ($user->sociallinks as $link)
+                <a href="{{ Str::startsWith($link->url, ['http://', 'https://']) ? $link->url : 'https://' . $link->url }}"
+                    target="_blank"
+                    class="w-full text-center font-semibold text-gray-600 border border-gray-300 px-4 py-2 rounded-lg"
+                    data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
+                    {{ $link->username }}
+                </a>
+            @endforeach
+        </div>
+        <footer class="py-6 text-gray-800 border-t">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-4 gap-4">
+                <p class="text-sm">&copy; {{ date('Y') }}. All rights reserved.</p>
+                <div class="flex gap-4">
+                    @guest
+                        <a href="{{ route('login') }}"
+                            class="bg-orange-400 px-4 py-1 text-sm rounded text-white hover:bg-orange-500">Login</a>
+                    @endguest
+                    @auth
+                        <a href="{{ route('dashboard') }}"
+                            class="bg-orange-400 px-4 py-1 text-sm rounded text-white hover:bg-orange-500">Dashboard</a>
+                    @endauth
+                </div>
+            </div>
+        </footer>
+    </div>
 
 </x-layouts.app>
