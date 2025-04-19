@@ -19,7 +19,7 @@
                                     d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z"
                                     clip-rule="evenodd" />
                             </svg>
-                            <p class="text-black text-xs font-medium">Upload your image here</p>
+                            <p class="text-black text-xs font-medium">Gambar tidak lebih dari 2MB</p>
                         </div>
                     </label>
                     <input id="imageUpload" type="file" name="image" class="hidden" accept="image/*"
