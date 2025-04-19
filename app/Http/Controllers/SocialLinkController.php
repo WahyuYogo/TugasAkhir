@@ -25,11 +25,11 @@ class SocialLinkController extends Controller
         $user = auth()->user();
 
         if ($user->socialLinks()->count() >= 6) {
-            return redirect()->back()->withErrors(['error' => 'Anda hanya bisa memiliki maksimal 6 project.']);
+            return redirect()->back()->withErrors(['error' => 'Anda hanya bisa memiliki maksimal 6 link.']);
         }
 
         $request->validate([
-            'url' => 'required|url',
+            'url' => 'required|string',
             'username' => 'required|string'
         ]);
 

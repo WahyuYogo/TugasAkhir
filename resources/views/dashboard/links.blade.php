@@ -22,7 +22,7 @@
                     </svg>
                 </div>
                 <!-- Input Link -->
-                <input type="url" id="social-link" name="url" required
+                <input type="text" id="social-link" name="url" required
                     class="pl-10 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 focus:ring-orange-500 focus:border-orange-500"
                     placeholder="Enter your social media URL" oninput="updateSocialPreview(this.value)">
             </div>
