@@ -106,33 +106,15 @@
                             </a>
                         </td>
                         <td class="px-4 py-3 border-r border-gray-200 whitespace-nowrap">
-                            <div class="relative text-right">
-                                <button id="dropdownActionButton-{{ $link->id }}"
-                                    data-dropdown-toggle="dropdownActionMenu-{{ $link->id }}"
-                                    class="text-gray-800 hover:bg-gray-100 focus:outline-none font-medium rounded-lg text-sm p-2.5 inline-flex items-center"
-                                    type="button">
-                                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" d="M6 12h.01M12 12h.01M18 12h.01" />
-                                    </svg>
+                            <form action="{{ route('links.destroy', $link->id) }}" method="POST"
+                                onsubmit="return confirm('Yakin Nih?')">
+                                @csrf
+                                @method('DELETE')
+                                <button
+                                    class="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition duration-200">
+                                    Delete
                                 </button>
-
-                                <div id="dropdownActionMenu-{{ $link->id }}"
-                                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-36 absolute right-0 mt-2">
-                                    <ul class="py-2 text-sm text-gray-700">
-                                        <li>
-                                            <form action="{{ route('links.destroy', $link->id) }}" method="POST"
-                                                onsubmit="return confirm('Yakin Nih?');">
-                                                @csrf @method('DELETE')
-                                                <button type="submit"
-                                                    class="w-full text-left px-4 py-2 hover:bg-gray-100">
-                                                    Delete
-                                                </button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
@@ -173,38 +155,20 @@
                         </td>
                         <td class="px-6 py-4 border-r border-gray-200">
                             <div class="flex items-center gap-3">
-                                <div class="relative text-right">
-                                    <button id="dropdownProjectButton-{{ $project->id }}"
-                                        data-dropdown-toggle="dropdownProjectMenu-{{ $project->id }}"
-                                        class="text-gray-800 hover:bg-gray-100 focus:outline-none font-medium rounded-lg text-sm p-2.5 inline-flex items-center"
-                                        type="button">
-                                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" d="M6 12h.01M12 12h.01M18 12h.01" />
-                                        </svg>
-                                    </button>
+                                <a href="{{ route('projects.edit', $project->id) }}"
+                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition">
+                                    Edit
+                                </a>
 
-                                    <div id="dropdownProjectMenu-{{ $project->id }}"
-                                        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow border border-gray-300 w-36 absolute right-0 mt-2">
-                                        <ul class="py-2 text-sm text-gray-700">
-                                            <li>
-                                                <a href="{{ route('projects.edit', $project->id) }}"
-                                                    class="block px-4 py-2 hover:bg-gray-100">Edit</a>
-                                            </li>
-                                            <li>
-                                                <form action="{{ route('projects.destroy', $project->id) }}"
-                                                    method="POST"
-                                                    onsubmit="return confirm('Yakin ingin menghapus project ini?');">
-                                                    @csrf @method('DELETE')
-                                                    <button type="submit"
-                                                        class="w-full text-left px-4 py-2 hover:bg-gray-100">
-                                                        Delete
-                                                    </button>
-                                                </form>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <form action="{{ route('projects.destroy', $project->id) }}" method="POST"
+                                    onsubmit="return confirm('Yakin ingin menghapus project ini?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition">
+                                        Delete
+                                    </button>
+                                </form>
                             </div>
 
                         </td>
@@ -240,34 +204,13 @@
                         <td class="px-6 py-4 border-r border-gray-200 whitespace-nowrap">{{ $index + 1 }}</td>
                         <td class="px-6 py-4 border-r border-gray-200 whitespace-nowrap">{{ $skill->name }}</td>
                         <td class="px-6 py-4 border-r border-gray-200 whitespace-nowrap">
-                            <div class="relative text-right">
-                                <button id="dropdownSkillButton-{{ $skill->id }}"
-                                    data-dropdown-toggle="dropdownSkillMenu-{{ $skill->id }}"
-                                    class="text-gray-800 hover:bg-gray-100 focus:outline-none font-medium rounded-lg text-sm p-2.5 inline-flex items-center"
-                                    type="button">
-                                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" d="M6 12h.01M12 12h.01M18 12h.01" />
-                                    </svg>
+                            <form method="POST" action="{{ route('skills.destroy', $skill) }}" class="inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-500 hover:text-red-700 text-sm font-semibold">
+                                    Hapus
                                 </button>
-
-                                <div id="dropdownSkillMenu-{{ $skill->id }}"
-                                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow border border-gray-300 w-36 absolute right-0 mt-2">
-                                    <ul class="py-2 text-sm text-gray-700">
-                                        <li>
-                                            <form action="{{ route('skills.destroy', $skill->id) }}" method="POST"
-                                                onsubmit="return confirm('Yakin hapus skill ini?');">
-                                                @csrf @method('DELETE')
-                                                <button type="submit"
-                                                    class="w-full text-left px-4 py-2 hover:bg-gray-100">
-                                                    Delete
-                                                </button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
+                            </form>
                         </td>
                     </tr>
                 @empty
