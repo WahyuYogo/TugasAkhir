@@ -2,7 +2,7 @@
     <nav class="bg-zinc-900 sticky w-full z-20 top-0 start-0">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-3">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <span class="self-center text-2xl font-bold text-white">Meisho</span>
+                <span class="self-center text-2xl font-bold text-white">VisuaLink</span>
             </a>
 
             <button data-collapse-toggle="navbar-default" type="button"

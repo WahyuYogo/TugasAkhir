@@ -3,7 +3,7 @@
         <h1 class="text-3xl font-bold text-gray-900 mb-6">Tentang Kami</h1>
 
         <p class="text-gray-700 leading-relaxed mb-4">
-            Selamat datang di <strong>Meisho</strong> — platform pembuatan portofolio online yang dirancang khusus
+            Selamat datang di <strong>VisuaLink</strong> — platform pembuatan portofolio online yang dirancang khusus
             untuk membantu kamu menampilkan karya, keterampilan, dan pengalaman secara profesional.
         </p>
 
@@ -13,7 +13,7 @@
         </p>
 
         <p class="text-gray-700 leading-relaxed mb-4">
-            Dengan <strong>Meisho</strong>, kamu dapat dengan mudah:
+            Dengan <strong>VisuaLink</strong>, kamu dapat dengan mudah:
         </p>
 
         <ul class="list-disc pl-6 text-gray-700 mb-4">
@@ -29,7 +29,7 @@
         </p>
 
         <p class="text-gray-700 leading-relaxed">
-            Terima kasih telah menggunakan <strong>Meisho</strong>. Kami sangat senang bisa menjadi bagian dari
+            Terima kasih telah menggunakan <strong>VisuaLink</strong>. Kami sangat senang bisa menjadi bagian dari
             perjalananmu.
         </p>
     </div>
@@ -37,7 +37,7 @@
         <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
             <span class="text-sm text-gray-500 sm:text-center">
                 © {{ date('Y') }} <a href="{{ url('/') }}"
-                    class="hover:underline font-semibold text-orange-500">Meisho</a>. Semua hak dilindungi.
+                    class="hover:underline font-semibold text-orange-500">VisuaLink</a>. Semua hak dilindungi.
             </span>
             <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 sm:mt-0">
                 <li>
