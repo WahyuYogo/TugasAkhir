@@ -11,7 +11,7 @@
         <div class="mb-4">
             <label for="slug" class="block text-black font-medium mb-2 text-base">Claim Your URL</label>
             <div class="flex mt-1">
-                <span class="bg-gray-200 p-2 rounded-l">mypt.com/</span>
+                <span class="bg-gray-200 p-2 rounded-l">visualink.my.id/</span>
                 <input type="text" id="slug" wire:model="slug"
                     class="w-full bg-orange-50 border border-white text-gray-500 text-sm focus:ring-white focus:border-white block py-2 px-4">
             </div>

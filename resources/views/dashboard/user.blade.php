@@ -45,7 +45,7 @@
             <label for="npm-install-copy-button" class="sr-only">Label</label>
             <input id="npm-install-copy-button" type="text"
                 class="col-span-6 bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                value="/{{ auth()->user()->slug }}" disabled readonly>
+                value="visualink.my.id/{{ auth()->user()->slug }}" disabled readonly>
             <button data-copy-to-clipboard-target="npm-install-copy-button"
                 data-tooltip-target="tooltip-copy-npm-install-copy-button"
                 class="absolute end-2 top-1/2 -translate-y-1/2 text-gray-500 hover:bg-gray-100 rounded-lg p-2 inline-flex items-center justify-center">
