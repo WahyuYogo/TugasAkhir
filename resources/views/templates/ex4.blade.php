@@ -40,8 +40,8 @@
                         <!-- Overlay -->
                         <div
                             class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-center text-white p-4">
-                            <h3 class="text-lg font-bold">{{ $project->title }}</h3>
-                            <p class="text-sm mt-2">{{ $project->description }}</p>
+                            <h3 class="text-lg font-bold truncate">{{ $project->title }}</h3>
+                            <p class="text-sm mt-2 truncate">{{ $project->description }}</p>
                         </div>
                     </div>
                 @endforeach
