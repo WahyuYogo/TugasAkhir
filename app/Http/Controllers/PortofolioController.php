@@ -13,7 +13,7 @@ class PortofolioController extends Controller
 {
     $user = User::where('slug', $slug)->firstOrFail();
     $userTemplate = UserTemplate::where('user_id', $user->id)->first();
-    $template = $userTemplate ? $userTemplate->template->slug : 'minimalist';
+    $template = $userTemplate ? $userTemplate->template->slug : 'ex0';
     return view("templates.$template", compact('user', 'template'));
 }
 

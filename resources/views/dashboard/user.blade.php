@@ -225,7 +225,8 @@
                             <form method="POST" action="{{ route('skills.destroy', $skill) }}" class="inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-red-500 hover:text-red-700 text-sm font-semibold">
+                                <button type="submit"
+                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition">
                                     Hapus
                                 </button>
                             </form>

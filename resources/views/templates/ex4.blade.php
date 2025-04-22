@@ -40,8 +40,12 @@
                         <!-- Overlay -->
                         <div
                             class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-center text-white p-4">
-                            <h3 class="text-lg font-bold truncate">{{ $project->title }}</h3>
-                            <p class="text-sm mt-2 truncate">{{ $project->description }}</p>
+                            <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                                    d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
+                            </svg>
+
                         </div>
                     </div>
                 @endforeach
